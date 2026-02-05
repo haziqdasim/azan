@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azan Display System</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@300;500&display=swap"
-        rel="stylesheet">
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AZAN</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@300;500&display=swap"
+            rel="stylesheet">
+        <style>
         body {
-            background-color: #0d1b2a;
-            color: white;
-            font-family: 'Roboto', sans-serif;
+            background-color: white;
+            color: black;
+            font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
         }
 
-        .digital-clock {
-            font-family: 'Orbitron', sans-serif;
+        /* .digital-clock {
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
             font-size: 5rem;
             color: #00d4ff;
             text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
-        }
+        } */
 
-        .prayer-card {
+        /* .prayer-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             transition: transform 0.3s;
-        }
+        } */
 
         .active-prayer {
             border: 2px solid #00d4ff;
@@ -37,204 +41,228 @@
             transform: scale(1.05);
         }
 
-        .prayer-time {
+        /* .prayer-time {
             font-size: 2rem;
             font-weight: bold;
-        }
+        } */
 
-        .label {
+        /* .label {
             color: #aaa;
             text-transform: uppercase;
             font-size: 0.8rem;
-        }
+        } */
     </style>
-</head>
+    </head>
 
-<body>
+    <body>
+        <div class="container-fluid vh-100 d-flex flex-column p-4">
+            <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <h1>Masjid Abu Bakar Tanah Rata Cameron
+                                Highlands</h1>
+                            <h6>Pusat ibadah dan komuniti masyarakat.</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <button type="button" class="btn btn-primary">Info
+                                Terkini</button>
+                            <button type="button" class="btn btn-outline-secondary">Infak
+                                Masjid</button>
+                        </div>
 
-    <div class="container-fluid vh-100 d-flex flex-column p-4">
-        <div class="row mb-4">
-            <div class="col-md-4">
-                <h4 id="masihiDate">-- --- ----</h4>
-                <h5 class="text-info" id="hijriDate">-- --- ----</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="card prayer-card p-4 text-center"
+                            id="card-fajr">
+                            <div class="card-body">
+                                <div class="label">Subuh</div>
+                                <div class="prayer-time"
+                                    id="time-fajr">--:--</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card prayer-card p-4 text-center"
+                            id="card-syuruk">
+                            <div class="card-body">
+                                <div class="label">Syuruk</div>
+                                <div class="prayer-time"
+                                    id="time-syuruk">--:--</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card prayer-card p-4 text-center"
+                            id="card-dhuhr">
+                            <div class="card-body">
+                                <div class="label">Zohor</div>
+                                <div class="prayer-time"
+                                    id="time-dhuhr">--:--</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card prayer-card p-4 text-center"
+                            id="card-asr">
+                            <div class="card-body">
+                                <div class="label">Asar</div>
+                                <div class="prayer-time"
+                                    id="time-asr">--:--</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card prayer-card p-4 text-center"
+                            id="card-maghrib">
+                            <div class="card-body">
+                                <div class="label">Maghrib</div>
+                                <div class="prayer-time"
+                                    id="time-maghrib">--:--</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card prayer-card p-4 text-center"
+                            id="card-isha">
+                            <div class="card-body">
+                                <div class="label">Isyak</div>
+                                <div class="prayer-time"
+                                    id="time-isha">--:--</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="badge text-bg-success">
+                            <span id="liveClock">00:00:00</span>
+                            <span id="hijriDate">-- --- ----</span>
+                            <span>Hijrah</span>
+                            <span id="masihiDate">-- --- ----</span>
+                        </span>
+                        <button class="btn btn-primary btn-sm"
+                            data-bs-toggle="modal"
+                            data-bs-target="#settingsModal">Pilih Zon</button>
+                        <div id="currentZone" class="badge bg-secondary">Zon:
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+
+        <!-- <div class="container-fluid vh-100 d-flex flex-column p-4">
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <h4 id="masihiDate">-- --- ----</h4>
+                    <h5>
+                        <span class="text-info" id="hijriDate">-- ---
+                            ----</span>
+                        <span class="text-info">Hijrah</span>
+                    </h5>
+
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="digital-clock" id="liveClock">00:00:00</div>
+                    <div id="currentZone" class="badge bg-secondary">Zon: </div>
+                </div>
+                <div class="col-md-4 text-end">
+                    <button class="btn btn-outline-light btn-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#settingsModal">Pilih Zon</button>
+                </div>
             </div>
-            <div class="col-md-4 text-center">
-                <div class="digital-clock" id="liveClock">00:00:00</div>
-                <div id="currentZone" class="badge bg-secondary">Zone: SGR01</div>
+
+            <div class="row g-3 flex-grow-1 align-items-center">
+                <div class="col">
+                    <div class="prayer-card p-4 text-center" id="card-fajr">
+                        <div class="label">Subuh</div>
+                        <div class="prayer-time" id="time-fajr">--:--</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="prayer-card p-4 text-center" id="card-syuruk">
+                        <div class="label">Syuruk</div>
+                        <div class="prayer-time" id="time-syuruk">--:--</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="prayer-card p-4 text-center" id="card-dhuhr">
+                        <div class="label">Zohor</div>
+                        <div class="prayer-time" id="time-dhuhr">--:--</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="prayer-card p-4 text-center" id="card-asr">
+                        <div class="label">Asar</div>
+                        <div class="prayer-time" id="time-asr">--:--</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="prayer-card p-4 text-center" id="card-maghrib">
+                        <div class="label">Maghrib</div>
+                        <div class="prayer-time" id="time-maghrib">--:--</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="prayer-card p-4 text-center" id="card-isha">
+                        <div class="label">Isyak</div>
+                        <div class="prayer-time" id="time-isha">--:--</div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4 text-end">
-                <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#settingsModal">⚙️
-                    Settings</button>
+        </div> -->
+
+        <div class="modal fade" id="settingsModal" tabindex="-1"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ubah Zon</h5>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label class="form-label">Pilih Zon</label>
+                        <select class="form-select" id="zoneSelect">
+                            <option value="SGR01" selected>Selangor (Gombak,
+                                Petaling, Sepang, Hulu Langat, Hulu Selangor,
+                                S.Alam)</option>
+                            <option value="SGR02">Selangor (Kuala Selangor,
+                                Sabak Bernam)</option>
+                            <option value="SGR03">Selangor (Klang, Kuala
+                                Langat)</option>
+
+                            <option value="JHR01">Johor (Pulau Aur dan Pulau
+                                Pemanggil)</option>
+                            <option value="JHR02">Johor (Johor Bahru, Kota
+                                Tinggi, Mersing)</option>
+                            <option value="JHR03">Johor (Kluang,
+                                Pontian)</option>
+                            <option value="JHR04">Johor (Batu Pahat, Muar,
+                                Segamat, Gemas Johor)</option>
+
+                            <option value="MLK01">Seluruh Negeri Melaka</option>
+
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary"
+                            onclick="saveSettings()">Simpan</button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="row g-3 flex-grow-1 align-items-center">
-            <div class="col">
-                <div class="prayer-card p-4 text-center" id="card-fajr">
-                    <div class="label">Subuh</div>
-                    <div class="prayer-time" id="time-fajr">--:--</div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="prayer-card p-4 text-center" id="card-syuruk">
-                    <div class="label">Syuruk</div>
-                    <div class="prayer-time" id="time-syuruk">--:--</div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="prayer-card p-4 text-center" id="card-dhuhr">
-                    <div class="label">Zohor</div>
-                    <div class="prayer-time" id="time-dhuhr">--:--</div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="prayer-card p-4 text-center" id="card-asr">
-                    <div class="label">Asar</div>
-                    <div class="prayer-time" id="time-asr">--:--</div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="prayer-card p-4 text-center" id="card-maghrib">
-                    <div class="label">Maghrib</div>
-                    <div class="prayer-time" id="time-maghrib">--:--</div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="prayer-card p-4 text-center" id="card-isha">
-                    <div class="label">Isyak</div>
-                    <div class="prayer-time" id="time-isha">--:--</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="settingsModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog text-dark">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">System Settings</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <label class="form-label">Select JAKIM Zone</label>
-                    <select class="form-select" id="zoneSelect">
-                        <option value="JHR01">Johor (Pulau Aur dan Pulau Pemanggil)</option>
-                        <option value="JHR02">Johor (Johor Bahru, Kota Tinggi, Mersing)</option>
-                        <option value="JHR03">Johor (Kluang, Pontian)</option>
-                        <option value="JHR04">Johor (Batu Pahat, Muar, Segamat, Gemas Johor)</option>
-
-                        <option value="MLK01">Seluruh Negeri Melaka</option>
-
-                        <option value="SGR01">Selangor (Gombak, Petaling, Sepang, Hulu Langat, Hulu Selangor, S.Alam)
-                        </option>
-                        <option value="SGR02">Selangor (Kuala Selangor, Sabak Bernam)</option>
-                        <option value="SGR03">Selangor (Klang, Kuala Langat)</option>
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="saveSettings()">Save Changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- <script>
-        let currentZone = localStorage.getItem('azanZone') || 'SGR01';
-
-        function updateClock() {
-            const now = new Date();
-            document.getElementById('liveClock').innerText = now.toLocaleTimeString('en-GB');
-            document.getElementById('masihiDate').innerText = now.toLocaleDateString('en-MY', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-        }
-
-        async function fetchPrayerTimes() {
-            try {
-                // Official JAKIM e-Solat API URL
-                const response = await fetch(`https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&zone=${currentZone}&period=today`);
-                const result = await response.json();
-
-                if (result.status === "OK!" && result.prayerTime.length > 0) {
-                    const todayData = result.prayerTime[0]; // Get the first (and only) day object
-
-                    // Mapping JAKIM JSON keys to your HTML element IDs
-                    const prayerMapping = {
-                        'fajr': todayData.fajr,
-                        'syuruk': todayData.syuruk,
-                        'dhuhr': todayData.dhuhr,
-                        'asr': todayData.asr,
-                        'maghrib': todayData.maghrib,
-                        'isha': todayData.isha
-                    };
-
-                    const now = new Date();
-                    let nextPrayerId = null;
-
-                    for (const [id, timeStr] of Object.entries(prayerMapping)) {
-                        // 1. Update the UI with formatted time
-                        // JAKIM provides "HH:mm:ss", we convert to "hh:mm AM/PM"
-                        const [hours, minutes] = timeStr.split(':');
-                        const tempDate = new Date();
-                        tempDate.setHours(parseInt(hours), parseInt(minutes), 0);
-
-                        const displayTime = tempDate.toLocaleTimeString('en-GB', {
-                            hour: '2-digit',
-                            minute: '2-digit',
-                            hour12: true
-                        }).toUpperCase();
-
-                        document.getElementById(`time-${id}`).innerText = displayTime;
-
-                        // 2. Logic to find the next/active prayer
-                        const card = document.getElementById(`card-${id}`);
-                        card.classList.remove('active-prayer'); // Reset styles
-
-                        if (tempDate > now && !nextPrayerId) {
-                            nextPrayerId = id;
-                            card.classList.add('active-prayer'); // Highlight the coming prayer
-                        }
-                    }
-
-                    // 3. Update Dates and Zone
-                    document.getElementById('hijriDate').innerText = todayData.hijri;
-                    document.getElementById('currentZone').innerText = `Zone: ${result.zone}`;
-                    document.getElementById('masihiDate').innerText = now.toLocaleDateString('en-MY', {
-                        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-                    });
-                }
-            } catch (error) {
-                console.error("Failed to fetch prayer times from JAKIM:", error);
-            }
-        }
-
-        function saveSettings() {
-            currentZone = document.getElementById('zoneSelect').value;
-            localStorage.setItem('azanZone', currentZone);
-            fetchPrayerTimes();
-            bootstrap.Modal.getInstance(document.getElementById('settingsModal')).hide();
-        }
-
-        // Initial triggers
-        setInterval(updateClock, 1000);
-        updateClock();
-        fetchPrayerTimes();
-
-        // Refresh prayer times every 6 hours (more efficient than 1 hour)
-        setInterval(fetchPrayerTimes, 21600000);
-    </script> -->
-
-
-    <script>
+        <script>
         // 1. Mapping for Hijrah Months
         const hijriMonths = [
-            "Muharram", "Safar", "Rabi'ul Awwal", "Rabi'ul Akhir",
-            "Jumada al-Ula", "Jumada al-Akhirah", "Rajab", "Sha'ban",
-            "Ramadan", "Shawwal", "Dhu al-Qa'dah", "Dhu al-Hijjah"
+            "Muharam", "Safar", "Rabiul Awal", "Rabiul Akhir",
+            "Jamadil Awal", "Jamadil Akhir", "Rejab", "Sya'ban",
+            "Ramadan", "Syawal", "Zulkaedah", "Zulhijjah"
         ];
 
         // 2. Mapping for Zone Names (Partial list - add more as needed)
@@ -316,7 +344,8 @@
         fetchPrayerTimes();
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
 
 </html>
