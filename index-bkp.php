@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AZAN - Waktu Solat </title>
+    <title>AZAN</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@300;500&display=swap"
         rel="stylesheet">
@@ -14,7 +14,7 @@
         body {
             background-color: white;
             color: black;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
         }
 
@@ -53,11 +53,15 @@
 
 <body class="vh-100 d-flex align-content-between flex-wrap p-4">
 
-    <!-- <header>
+    <header>
+
         <div class="d-flex align-items-center">
             <nav class="navbar navbar-expand-lg navbar-light fixed-top px-4">
                 <div class="container-fluid">
-                    <h3 class="fw-bolder">AZAN</h3>
+                    <a class="navbar-brand fw-bold" href="#">
+                        <!-- <img src="#" alt="Logo" width="30" class="me-2"> -->
+                        AZAN
+                    </a>
                     <div class="ms-auto d-none d-lg-flex align-items-center gap-3">
                         <button class="btn btn-primary rounded-pill px-4" data-bs-toggle="modal"
                             data-bs-target="#settingsModal">
@@ -68,27 +72,13 @@
                 </div>
             </nav>
         </div>
-    </header> -->
+        
+    </header>
 
-    <div class="row w-100 bg-primary">
-        <div class="col-md-2">
-            <div class="text-start">
-                <h3 class="fw-bolder">AZAN</h3>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div class="text-center">
 
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="text-end">
-                <span class="h6" id="hijriDate">-- --- ----</span> <span class="h6">Hijrah</span><br>
-                <span class="h6" id="masihiDate">-- --- ----</span>
-            </div>
-        </div>
+    <div class="container-fluid text-center">
+
     </div>
-    
 
     <div class="container-fluid text-center">
         <div class="container content-wrapper position-relative">
@@ -96,13 +86,12 @@
                 <i class="fa-solid fa-mosque me-1"></i>
                 Portal Waktu Solat
             </span>
-            <h1 class="display-3 text-navy">
-                Waktu Solat
+            <h1 class="display-3 fw-bold text-navy">
+                Waktu Solat Malaysia
             </h1>
-            <p class="lead text-muted mb-5" id="currentZone"></p>
-            <!-- <p class="lead text-muted mb-5">Sumber: <a href="https://www.e-solat.gov.my/" target="_blank">e-Solat JAKIM</a></p> -->
-
-
+            <p class="lead text-muted mb-5">
+                Pusat ibadah dan komuniti masyarakat.
+            </p>
             <div class="d-flex justify-content-center gap-3 mb-5">
                 <button class="btn btn-primary btn-lg rounded-pill px-5">
                     <i class="fa-solid fa-info me-1"></i>
@@ -115,126 +104,129 @@
             </div>
         </div>
     </div>
-
+    
     <div class="container-fluid text-center">
+        <div class="bg-white shadow-lg rounded-5 p-4 mx-auto">
+            <div class="row g-2 justify-content-center text-uppercase fw-bold">
+                <div class="col">
 
-
-        <div class="row">
-            <div class="col-md-10">
-                <div class="bg-white shadow-lg rounded-5 p-4 mx-auto">
-                    <div class="row g-2 justify-content-center text-uppercase fw-bold">
-                        <div class="col">
-
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <span class="opacity-50">Subuh</span>
-                                        <!-- <div class="btn btn-outline-secondary">
-                                            <i class="fa-regular fa-sun"></i>
-                                        </div> -->
-                                    </div>
-                                    <h1 class="card-title fw-bolder py-3" id="time-fajr">--:--</h1>
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <span class="opacity-50">Subuh</span>
+                                <div class="btn btn-outline-secondary">
+                                    <i class="fa-regular fa-sun"></i>
                                 </div>
                             </div>
-
-                        </div>
-                        <div class="col">
-
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <span class="opacity-50">Syuruk</span>
-                                        <!-- <div class="btn btn-outline-secondary">
-                                            <i class="fa-regular fa-sun"></i>
-                                        </div> -->
-                                    </div>
-                                    <h1 class="card-title fw-bolder py-3" id="time-syuruk">--:--</h1>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col">
-
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <span class="opacity-50">Zohor</span>
-                                        <!-- <div class="btn btn-outline-secondary">
-                                            <i class="fa-regular fa-sun"></i>
-                                        </div> -->
-                                    </div>
-                                    <h1 class="card-title fw-bolder py-3" id="time-dhuhr">--:--</h1>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col">
-
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <span class="opacity-50">Asar</span>
-                                        <!-- <div class="btn btn-outline-secondary">
-                                            <i class="fa-regular fa-sun"></i>
-                                        </div> -->
-                                    </div>
-                                    <h1 class="card-title fw-bolder py-3" id="time-asr">--:--</h1>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col">
-
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <span class="opacity-50">Maghrib</span>
-                                        <!-- <div class="btn btn-outline-secondary">
-                                            <i class="fa-regular fa-sun"></i>
-                                        </div> -->
-                                    </div>
-                                    <h1 class="card-title fw-bolder py-3" id="time-maghrib">--:--</h1>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col">
-
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <span class="opacity-50">Ishak</span>
-                                        <!-- <div class="btn btn-outline-secondary">
-                                            <i class="fa-regular fa-moon"></i>
-                                        </div> -->
-                                    </div>
-                                    <h1 class="card-title fw-bolder py-3" id="time-isha">--:--</h1>
-                                </div>
-                            </div>
-
-
+                            <h1 class="card-title fw-bolder py-3" id="time-fajr">--:--</h1>
+                            <hr class="border-secondary opacity-25">
+                            <span class="badge bg-secondary">Iqamah</span>
                         </div>
                     </div>
-                    
+
+                </div>
+                <div class="col">
+
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <span class="opacity-50">Syuruk</span>
+                                <div class="btn btn-outline-secondary">
+                                    <i class="fa-regular fa-sun"></i>
+                                </div>
+                            </div>
+                            <h1 class="card-title fw-bolder py-3" id="time-syuruk">--:--</h1>
+                            <hr class="border-secondary opacity-25">
+                            <span class="badge bg-secondary">Iqamah: -</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col">
+
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <span class="opacity-50">Zohor</span>
+                                <div class="btn btn-outline-secondary">
+                                    <i class="fa-regular fa-sun"></i>
+                                </div>
+                            </div>
+                            <h1 class="card-title fw-bolder py-3" id="time-dhuhr">--:--</h1>
+                            <hr class="border-secondary opacity-25">
+                            <span class="badge bg-secondary">Iqamah</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col">
+
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <span class="opacity-50">Asar</span>
+                                <div class="btn btn-outline-secondary">
+                                    <i class="fa-regular fa-sun"></i>
+                                </div>
+                            </div>
+                            <h1 class="card-title fw-bolder py-3" id="time-asr">--:--</h1>
+                            <hr class="border-secondary opacity-25">
+                            <span class="badge bg-secondary">Iqamah</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col">
+
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <span class="opacity-50">Maghrib</span>
+                                <div class="btn btn-outline-secondary">
+                                    <i class="fa-regular fa-sun"></i>
+                                </div>
+                            </div>
+                            <h1 class="card-title fw-bolder py-3" id="time-maghrib">--:--</h1>
+                            <hr class="border-secondary opacity-25">
+                            <span class="badge bg-secondary">Iqamah</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col">
+
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <span class="opacity-50">Ishak</span>
+                                <div class="btn btn-outline-secondary">
+                                    <i class="fa-regular fa-moon"></i>
+                                </div>
+                            </div>
+                            <h1 class="card-title fw-bolder py-3" id="time-isha">--:--</h1>
+                            <hr class="border-secondary opacity-25">
+                            <span class="badge bg-secondary">Iqamah</span>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
-            <div class="col-md-2 d-inline-flex">
-                <div class="d-flex bg-primary shadow-lg rounded-5 p-4 mx-auto justify-content-center" style="flex: auto;">
-                    <div class="row g-2 justify-content-center text-uppercase fw-bold">
-                        <div class="col d-flex justify-content-center align-items-center">
 
-                            <h1 class="fw-bolder py-3 text-white" id="liveClock">00:00</h1>
-
-                        </div>
-                    </div>
+            <div class="footer-info d-flex justify-content-between mt-4 text-muted small border-top pt-3">
+                <div>
+                    <i class="fa-regular fa-clock text-primary"></i>
+                    <span><span class="h6 text-dark fw-bolder" id="liveClock">00:00:00</span> • <span class="h6"
+                            id="hijriDate">-- --- ----</span>
+                        <span class="h6">Hijrah</span> • <span class="h6" id="masihiDate">-- --- ----</span></span>
+                </div>
+                <div>
+                    <span><span id="currentZone"></span> • Sumber: <a href="https://www.e-solat.gov.my/"
+                            target="_blank">e-Solat JAKIM</a></span>
                 </div>
             </div>
         </div>
-
-
-
-
     </div>
 
 
@@ -311,7 +303,30 @@
                 }
             }
 
-        
+            // 3. Update the UI
+            sortedKeys.forEach(id => {
+                const card = document.getElementById(`time-${id}`).closest('.card');
+                const iqamahBadge = card.querySelector('.badge');
+                const prayerDate = prayerDataTimes[id];
+
+                // Handle Iqamah Display
+                if (id === 'syuruk') {
+                    iqamahBadge.style.display = 'show'; // Syuruk has no iqamah
+                } else if (prayerDate) {
+                    iqamahBadge.style.display = 'inline-block';
+                    const iqamahDate = new Date(prayerDate.getTime() + 5 * 60000);
+                    iqamahBadge.innerText = `Iqamah: ${iqamahDate.toLocaleTimeString('en-GB', {
+                        hour: '2-digit', minute: '2-digit', hour12: true
+                    }).toUpperCase()}`;
+                }
+
+                // Apply Solid Primary Color
+                if (id === currentActiveId) {
+                    card.classList.add('bg-primary-solid', 'shadow');
+                } else {
+                    card.classList.remove('bg-primary-solid', 'shadow');
+                }
+            });
         }
 
         async function fetchPrayerTimes() {
