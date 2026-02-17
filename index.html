@@ -103,10 +103,24 @@
             font-style: normal;
         }
 
-        .inter-bold{
+        .inter-black{
             font-family: 'inter-black';
             src: url('fonts/Inter-Black.woff2') format('woff2');
             font-weight: 900;
+            font-style: normal;
+        }
+
+        .inter-bold{
+            font-family: 'inter-bold';
+            src: url('fonts/Inter-Bold.woff2') format('woff2');
+            font-weight: 800;
+            font-style: normal;
+        }
+
+        .inter-medium{
+            font-family: 'inter-medium';
+            src: url('fonts/Inter-Medium.woff2') format('woff2');
+            font-weight: 500;
             font-style: normal;
         }
 
@@ -160,7 +174,7 @@
                         <div class="col-md-4 align-self-center">
                             <div class="text-start">
                                 <img src="assets/logo.png" alt="logo" width="250">
-                                <span class="fw-bold fs-4">Waktu Solat 🕋 (test2)</span>
+                                <span class="fw-bold fs-4" style="letter-spacing: -1px;">Waktu Solat 🕋 (test 3)</span>
                             </div>
                         </div>
                         <div class="col-md-4 align-self-center">
@@ -168,7 +182,7 @@
                         </div>
                         <div class="col-md-4 align-self-start">
                             <div class="text-end">
-                                <span class="h1 display-2 fw-bolder bebas display" id="masihiDate">-- --- ----</span><br>
+                                <span class="h1 display-2 fw-bolder bebas display" style="letter-spacing: 1px;" id="masihiDate">-- --- ----</span><br>
                                 <span class="h1 display-5 text-primary bebas" id="hijriDate">-- --- ----</span> <span class="h1 display-5 text-primary bebas">H</span><br>
                             </div>
                         </div>
@@ -184,7 +198,7 @@
                 <i class="fs-5 fa-solid fa-mosque me-1"></i>
                 <span class="h6">Portal Waktu Solat</span>
             </span>
-            <h1 class="inter-bold text-navy" style="font-size: 96px;">
+            <h1 class="inter-black text-navy" style="font-size: 96px; letter-spacing: -3px;">
                 Waktu Solat 🕋
             </h1>
             <p class="lead text-muted mb-5" id="currentZone"></p>
@@ -214,13 +228,13 @@
                             <div class="card text-center">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-center">
-                                        <span class="opacity-50 fs-5">Subuh</span>
+                                        <span class="opacity-50 fs-5 inter-bold">Subuh</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3" id="time-fajr">--:--</h1>
-                                    <h6 class="fw-bold" id="timer-fajr">--:--</h6>
+                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-fajr">--:--</h1>
+                                    <h6 class="inter-medium" id="timer-fajr">--:--</h6>
                                 </div>
                             </div>
 
@@ -230,13 +244,13 @@
                             <div class="card text-center">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-center">
-                                        <span class="opacity-50 fs-5">Syuruk</span>
+                                        <span class="opacity-50 fs-5 inter-bold">Syuruk</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3" id="time-syuruk">--:--</h1>
-                                    <h6 class="fw-bold" id="timer-syuruk">--:--</h6>
+                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-syuruk">--:--</h1>
+                                    <h6 class="inter-medium" id="timer-syuruk">--:--</h6>
                                 </div>
                             </div>
 
@@ -246,13 +260,13 @@
                             <div class="card text-center">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-center">
-                                        <span class="opacity-50 fs-5">Zohor</span>
+                                        <span class="opacity-50 fs-5 inter-bold">Zohor</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3" id="time-dhuhr">--:--</h1>
-                                    <h6 class="fw-bold" id="timer-dhuhr">--:--</h6>
+                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-dhuhr">--:--</h1>
+                                    <h6 class="inter-medium" id="timer-dhuhr">--:--</h6>
                                 </div>
                             </div>
 
@@ -262,13 +276,13 @@
                             <div class="card text-center">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-center">
-                                        <span class="opacity-50 fs-5">Asar</span>
+                                        <span class="opacity-50 fs-5 inter-bold">Asar</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3" id="time-asr">--:--</h1>
-                                    <h6 class="fw-bold" id="timer-asr">--:--</h6>
+                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-asr">--:--</h1>
+                                    <h6 class="inter-medium" id="timer-asr">--:--</h6>
                                 </div>
                             </div>
 
@@ -278,13 +292,13 @@
                             <div class="card text-center">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-center">
-                                        <span class="opacity-50 fs-5">Maghrib</span>
+                                        <span class="opacity-50 fs-5 inter-bold">Maghrib</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3" id="time-maghrib">--:--</h1>
-                                    <h6 class="fw-bold" id="timer-maghrib">--:--</h6>
+                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-maghrib">--:--</h1>
+                                    <h6 class="inter-medium" id="timer-maghrib">--:--</h6>
                                 </div>
                             </div>
 
@@ -295,13 +309,13 @@
                             <div class="card text-center">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-center">
-                                        <span class="opacity-50 fs-5">Ishak</span>
+                                        <span class="opacity-50 fs-5 inter-bold">Ishak</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-moon"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3" id="time-isha">--:--</h1>
-                                    <h6 class="fw-bold" id="timer-isha">--:--</h6>
+                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-isha">--:--</h1>
+                                    <h6 class="inter-medium" id="timer-isha">--:--</h6>
                                 </div>
                             </div>
 
@@ -316,8 +330,8 @@
                     <div class="row g-2 justify-content-center text-uppercase fw-bold">
                         <div class="col justify-content-center align-self-center">
 
-                            <h1 class="display-2 fw-bolder py-3 text-white bebas" id="liveClock">00:00</h1>
-                            <span class="h2 bebas" id="liveClock-second">00 seconds</span> <span class="h4 bebas">Seconds</span>
+                            <h1 class="display-2 fw-bolder py-3 text-white bebas" style="line-height: 20px; letter-spacing: 2px;" id="liveClock">00:00</h1>
+                            <span class="h1 bebas" id="liveClock-second">00 seconds</span> <span class="h3 bebas" style="letter-spacing: 1px;">Seconds</span>
 
                         </div>
                     </div>
