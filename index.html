@@ -13,11 +13,35 @@
     <style>
         @font-face {
             font-family: 'bebas';
-            src: url('fonts/BebasNeue.woff') format('woff'), url('fonts/BebasNeue.woff2') format('woff2');
+            src: url('fonts/BebasNeue.woff') format('woff'),
+            url('fonts/BebasNeue.woff2') format('woff2'), 
+            url('fonts/Inter-Medium.woff2') format('woff2'),
+            url('fonts/Inter-Bold.woff2') format('woff2'),
+            url('fonts/Inter-Black.woff2') format('woff2');
             font-weight: normal;
             font-style: normal;
         }
 
+        @font-face {
+            font-family: 'inter-medium';
+            src: url('fonts/Inter-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'inter-bold';
+            src: url('fonts/Inter-Bold.woff2') format('woff2');
+            font-weight: 800;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'inter-black';
+            src: url('fonts/Inter-Black.woff2') format('woff2');
+            font-weight: 900;
+            font-style: normal;
+        }
 
         body {
             background-color: white;
@@ -76,6 +100,13 @@
             font-family: 'bebas';
             src: url('fonts/BebasNeue.woff') format('woff'), url('fonts/BebasNeue.woff2') format('woff2');
             font-weight: normal;
+            font-style: normal;
+        }
+
+        .inter-bold{
+            font-family: 'inter-black';
+            src: url('fonts/Inter-Black.woff2') format('woff2');
+            font-weight: 900;
             font-style: normal;
         }
 
@@ -153,7 +184,7 @@
                 <i class="fs-5 fa-solid fa-mosque me-1"></i>
                 <span class="h6">Portal Waktu Solat</span>
             </span>
-            <h1 class="fw-bolder text-navy" style="font-size: 96px;">
+            <h1 class="inter-bold text-navy" style="font-size: 96px;">
                 Waktu Solat 🕋
             </h1>
             <p class="lead text-muted mb-5" id="currentZone"></p>
