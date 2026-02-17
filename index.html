@@ -174,7 +174,7 @@
                         <div class="col-md-4 align-self-center">
                             <div class="text-start">
                                 <img src="assets/logo.png" alt="logo" width="250">
-                                <span class="inter-medium fs-4" style="letter-spacing: -1px;">Waktu Solat 🕋 (test 4)</span>
+                                <span class="inter-medium fs-4" style="letter-spacing: -1px;">Waktu Solat 🕋 <small class="inter-medium opacity-25">v1.1</small> </span>
                             </div>
                         </div>
                         <div class="col-md-4 align-self-center">
@@ -234,7 +234,7 @@
                                         </div> -->
                                     </div>
                                     <h1 class="display-6 fw-bolder py-3 inter-black" id="time-fajr">--:--</h1>
-                                    <h6 class="inter-medium" id="timer-fajr">--:--</h6>
+                                    <h6 class="inter-bold" id="timer-fajr">--:--</h6>
                                 </div>
                             </div>
 
@@ -250,7 +250,7 @@
                                         </div> -->
                                     </div>
                                     <h1 class="display-6 fw-bolder py-3 inter-black" id="time-syuruk">--:--</h1>
-                                    <h6 class="inter-medium" id="timer-syuruk">--:--</h6>
+                                    <h6 class="inter-bold" id="timer-syuruk">--:--</h6>
                                 </div>
                             </div>
 
@@ -266,7 +266,7 @@
                                         </div> -->
                                     </div>
                                     <h1 class="display-6 fw-bolder py-3 inter-black" id="time-dhuhr">--:--</h1>
-                                    <h6 class="inter-medium" id="timer-dhuhr">--:--</h6>
+                                    <h6 class="inter-bold" id="timer-dhuhr">--:--</h6>
                                 </div>
                             </div>
 
@@ -282,7 +282,7 @@
                                         </div> -->
                                     </div>
                                     <h1 class="display-6 fw-bolder py-3 inter-black" id="time-asr">--:--</h1>
-                                    <h6 class="inter-medium" id="timer-asr">--:--</h6>
+                                    <h6 class="inter-bold" id="timer-asr">--:--</h6>
                                 </div>
                             </div>
 
@@ -298,7 +298,7 @@
                                         </div> -->
                                     </div>
                                     <h1 class="display-6 fw-bolder py-3 inter-black" id="time-maghrib">--:--</h1>
-                                    <h6 class="inter-medium" id="timer-maghrib">--:--</h6>
+                                    <h6 class="inter-bold" id="timer-maghrib">--:--</h6>
                                 </div>
                             </div>
 
@@ -315,7 +315,7 @@
                                         </div> -->
                                     </div>
                                     <h1 class="display-6 fw-bolder py-3 inter-black" id="time-isha">--:--</h1>
-                                    <h6 class="inter-medium" id="timer-isha">--:--</h6>
+                                    <h6 class="inter-bold" id="timer-isha">--:--</h6>
                                 </div>
                             </div>
 
@@ -331,7 +331,7 @@
                         <div class="col justify-content-center align-self-center">
 
                             <h1 class="display-2 fw-bolder py-3 text-white bebas" style="line-height: 20px; letter-spacing: 2px;" id="liveClock">00:00</h1>
-                            <span class="h1 bebas" id="liveClock-second">00 seconds</span> <span class="h3 bebas" style="letter-spacing: 1px;">Seconds</span>
+                            <span class="h1 display-4 bebas" id="liveClock-second">00 Saat</span> <span class="h1 bebas" style="letter-spacing: 1px;">Saat</span>
 
                         </div>
                     </div>
@@ -461,7 +461,8 @@
                     const m = Math.floor((diffMs % 3600000) / 60000);
                     const s = Math.floor((diffMs % 60000) / 1000);
                     
-                    timerElement.innerText = `-${h}h ${m}m ${s}s`;
+                    // timerElement.innerText = `${h} Jam ${m} Min ${s} Saat`;
+                    timerElement.innerText = `${h} Jam ${m} Min lagi`;
                     timerElement.classList.add('text-primary'); 
                 }
             });
