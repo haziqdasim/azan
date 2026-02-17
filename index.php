@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AZAN - Waktu Solat </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@300;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -16,6 +16,10 @@
             color: black;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('assets/bg.webp');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
         }
 
         .active-prayer {
@@ -26,10 +30,11 @@
 
         .card {
             border-radius: 16px;
+            height: 200px;
         }
 
         .bg-primary-solid {
-            background-color: #0d6efd !important;
+            background-color: #0268a2 !important;
             color: white !important;
             transition: all 0.4s ease;
             transform: scale(1.02);
@@ -46,94 +51,103 @@
 
         .bg-primary-solid .badge {
             background-color: white !important;
-            color: #0d6efd !important;
+            color: #0268a2 !important;
         }
+
+        .glass-card {
+            /* The "Glass" effect */
+            background: rgba(255, 255, 255, 0.15); /* Translucent white */
+            backdrop-filter: blur(12px) saturate(180%); /* The blur + color boost */
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            
+             
+            
+            /* "Liquid" Sheen */
+            background: linear-gradient(
+                135deg, 
+                rgba(255, 255, 255, 0.2) 0%, 
+                rgba(255, 255, 255, 0.05) 100%
+            );
+        }
+
+        .bebas{
+            font-family: bebas;
+        }
+
+        .card-body{
+            align-content: center;
+        }
+
     </style>
 </head>
 
-<body class="vh-100 d-flex align-content-between flex-wrap p-4">
+<body class="vh-100 d-flex align-content-between flex-wrap p-2">
 
-    <!-- <header>
-        <div class="d-flex align-items-center">
-            <nav class="navbar navbar-expand-lg navbar-light fixed-top px-4">
-                <div class="container-fluid">
-                    <h3 class="fw-bolder">AZAN</h3>
-                    <div class="ms-auto d-none d-lg-flex align-items-center gap-3">
-                        <button class="btn btn-primary rounded-pill px-4" data-bs-toggle="modal"
-                            data-bs-target="#settingsModal">
-                            <i class="fa-solid fa-map-location-dot me-1"></i>
-                            Pilih Zon
-                        </button>
+    <div class="container-fluid text-center">
+        <div class="row">
+            <div class="col-md">
+                <div class="glass-card rounded-5 p-4 mx-auto">
+                    <div class="d-flex row g-2 justify-content-center fw-bold">
+                        <div class="col-md-6 align-self-center">
+                            <div class="text-start">
+                                <img src="assets/logo.png" alt="logo" width="200">
+                                <span class="fw-bold fs-5">Waktu Solat 🕋</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-end">
+                                <span class="h3 fw-bolder" id="masihiDate">-- --- ----</span><br>
+                                <span class="h4 text-primary" id="hijriDate">-- --- ----</span> <span class="h5 text-primary">Hijrah</span><br>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </nav>
-        </div>
-    </header> -->
-
-    <div class="row w-100 bg-primary">
-        <div class="col-md-2">
-            <div class="text-start">
-                <h3 class="fw-bolder">AZAN</h3>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div class="text-center">
-
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="text-end">
-                <span class="h6" id="hijriDate">-- --- ----</span> <span class="h6">Hijrah</span><br>
-                <span class="h6" id="masihiDate">-- --- ----</span>
             </div>
         </div>
     </div>
-    
 
     <div class="container-fluid text-center">
         <div class="container content-wrapper position-relative">
-            <span class="badge rounded-pill border px-3 py-2 mb-4 text-primary">
-                <i class="fa-solid fa-mosque me-1"></i>
-                Portal Waktu Solat
+            <span class="badge rounded-pill border px-4 py-3 mb-4 text-primary">
+                <i class="fs-5 fa-solid fa-mosque me-1"></i>
+                <span class="h6">Portal Waktu Solat</span>
             </span>
-            <h1 class="display-3 text-navy">
-                Waktu Solat
+            <h1 class="fw-bolder text-navy" style="font-size: 96px;">
+                Waktu Solat 🕋
             </h1>
             <p class="lead text-muted mb-5" id="currentZone"></p>
-            <!-- <p class="lead text-muted mb-5">Sumber: <a href="https://www.e-solat.gov.my/" target="_blank">e-Solat JAKIM</a></p> -->
 
 
             <div class="d-flex justify-content-center gap-3 mb-5">
-                <button class="btn btn-primary btn-lg rounded-pill px-5">
+                <button class="btn btn-primary btn-lg rounded-pill px-4">
                     <i class="fa-solid fa-info me-1"></i>
                     Info Terkini
                 </button>
-                <button class="btn btn-outline-secondary btn-lg rounded-pill px-5 bg-white">
-                    <i class="fa-regular fa-heart text-primary me-1"></i>
-                    Infak Masjid
+                <button type="button" class="btn btn-light btn-lg rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#settingsModal">
+                    <i class="fa-solid fa-map-location-dot me-1"></i>
+                    Pilih Zon
                 </button>
             </div>
         </div>
     </div>
 
     <div class="container-fluid text-center">
-
-
+        
         <div class="row">
             <div class="col-md-10">
                 <div class="bg-white shadow-lg rounded-5 p-4 mx-auto">
-                    <div class="row g-2 justify-content-center text-uppercase fw-bold">
+                    <div class="row g-2 justify-content-center text-uppercase fw-bold d-flex">
                         <div class="col">
 
                             <div class="card text-center">
                                 <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <span class="opacity-50">Subuh</span>
+                                    <div class="d-flex justify-content-center">
+                                        <span class="opacity-50 fs-5">Subuh</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="card-title fw-bolder py-3" id="time-fajr">--:--</h1>
+                                    <h1 class=" display-6 fw-bolder py-3" id="time-fajr">--:--</h1>
                                 </div>
                             </div>
 
@@ -142,13 +156,13 @@
 
                             <div class="card text-center">
                                 <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <span class="opacity-50">Syuruk</span>
+                                    <div class="d-flex justify-content-center">
+                                        <span class="opacity-50 fs-5">Syuruk</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="card-title fw-bolder py-3" id="time-syuruk">--:--</h1>
+                                    <h1 class=" display-6 fw-bolder py-3" id="time-syuruk">--:--</h1>
                                 </div>
                             </div>
 
@@ -157,13 +171,13 @@
 
                             <div class="card text-center">
                                 <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <span class="opacity-50">Zohor</span>
+                                    <div class="d-flex justify-content-center">
+                                        <span class="opacity-50 fs-5">Zohor</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="card-title fw-bolder py-3" id="time-dhuhr">--:--</h1>
+                                    <h1 class=" display-6 fw-bolder py-3" id="time-dhuhr">--:--</h1>
                                 </div>
                             </div>
 
@@ -172,13 +186,13 @@
 
                             <div class="card text-center">
                                 <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <span class="opacity-50">Asar</span>
+                                    <div class="d-flex justify-content-center">
+                                        <span class="opacity-50 fs-5">Asar</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="card-title fw-bolder py-3" id="time-asr">--:--</h1>
+                                    <h1 class=" display-6 fw-bolder py-3" id="time-asr">--:--</h1>
                                 </div>
                             </div>
 
@@ -187,13 +201,13 @@
 
                             <div class="card text-center">
                                 <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <span class="opacity-50">Maghrib</span>
+                                    <div class="d-flex justify-content-center">
+                                        <span class="opacity-50 fs-5">Maghrib</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="card-title fw-bolder py-3" id="time-maghrib">--:--</h1>
+                                    <h1 class=" display-6 fw-bolder py-3" id="time-maghrib">--:--</h1>
                                 </div>
                             </div>
 
@@ -203,13 +217,13 @@
 
                             <div class="card text-center">
                                 <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <span class="opacity-50">Ishak</span>
+                                    <div class="d-flex justify-content-center">
+                                        <span class="opacity-50 fs-5">Ishak</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-moon"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="card-title fw-bolder py-3" id="time-isha">--:--</h1>
+                                    <h1 class=" display-6 fw-bolder py-3" id="time-isha">--:--</h1>
                                 </div>
                             </div>
 
@@ -220,21 +234,17 @@
                 </div>
             </div>
             <div class="col-md-2 d-inline-flex">
-                <div class="d-flex bg-primary shadow-lg rounded-5 p-4 mx-auto justify-content-center" style="flex: auto;">
+                <div class="d-flex bg-primary-solid shadow-lg rounded-5 p-2 mx-auto justify-content-center" style="flex: auto;">
                     <div class="row g-2 justify-content-center text-uppercase fw-bold">
                         <div class="col d-flex justify-content-center align-items-center">
 
-                            <h1 class="fw-bolder py-3 text-white" id="liveClock">00:00</h1>
+                            <h1 class="display-5 fw-bolder py-3 text-white" id="liveClock">00:00</h1>
 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-
     </div>
 
 
@@ -250,7 +260,7 @@
                     <label class="form-label">Pilih Zon</label>
                     <select class="form-select" id="zoneSelect">
                         <option value="SGR01" selected>Selangor (Gombak, Petaling, Sepang, Hulu Langat, Hulu Selangor,
-                            S.Alam)</option>
+                            Shah Alam)</option>
                         <option value="SGR02">Selangor (Kuala Selangor, Sabak Bernam)</option>
                         <option value="SGR03">Selangor (Klang, Kuala Langat)</option>
 
@@ -264,7 +274,7 @@
                     </select>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="saveSettings()">Tukar Sekarang</button>
+                    <button type="button" class="btn btn-primary rounded-pill px-4" onclick="saveSettings()">Tukar Sekarang</button>
                 </div>
             </div>
         </div>
