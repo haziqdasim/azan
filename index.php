@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AZAN - Waktu Solat </title>
+    <title>AZAN - Waktu Solat 🕋</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@300;500&display=swap"
         rel="stylesheet">
@@ -20,12 +20,6 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
-        }
-
-        .active-prayer {
-            border: 2px solid #00d4ff;
-            background: rgba(0, 212, 255, 0.1);
-            transform: scale(1.05);
         }
 
         .card {
@@ -78,6 +72,39 @@
             align-content: center;
         }
 
+        .clock-card{
+            flex: auto;
+        }
+
+        /* Blinking Animation */
+        @keyframes blink-active {
+            0% { opacity: 1; transform: scale(1.02); }
+            50% { opacity: 0.7; transform: scale(1.0); }
+            100% { opacity: 1; transform: scale(1.02); }
+        }
+
+        .blink-mode {
+            animation: blink-active 1s infinite ease-in-out;
+            background-color: #0268a2 !important;
+            color: white !important;
+            border-radius: 16px;
+        }
+
+        /* Fixed Highlight (After blinking or during normal active) */
+        .highlight-solid {
+            background-color: #0268a2 !important;
+            color: white !important;
+            transform: scale(1.02);
+            transition: all 0.4s ease;
+            z-index: 2;
+        }
+
+        /* Ensure text is visible in highlight */
+        .highlight-solid .opacity-50, .blink-mode .opacity-50 {
+            color: white !important;
+            opacity: 1 !important;
+        }
+
     </style>
 </head>
 
@@ -88,16 +115,19 @@
             <div class="col-md">
                 <div class="glass-card rounded-5 p-4 mx-auto">
                     <div class="d-flex row g-2 justify-content-center fw-bold">
-                        <div class="col-md-6 align-self-center">
+                        <div class="col-md-4 align-self-center">
                             <div class="text-start">
                                 <img src="assets/logo.png" alt="logo" width="200">
                                 <span class="fw-bold fs-5">Waktu Solat 🕋</span>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4 align-self-center">
+                            <!-- <img src="assets/logo.png" alt="logo" width="200"> -->
+                        </div>
+                        <div class="col-md-4">
                             <div class="text-end">
-                                <span class="h3 fw-bolder" id="masihiDate">-- --- ----</span><br>
-                                <span class="h4 text-primary" id="hijriDate">-- --- ----</span> <span class="h5 text-primary">Hijrah</span><br>
+                                <span class="h1 display-5 fw-bolder bebas display" id="masihiDate">-- --- ----</span><br>
+                                <span class="h2 text-primary bebas" id="hijriDate">-- --- ----</span> <span class="h2 text-primary bebas">H</span><br>
                             </div>
                         </div>
                     </div>
@@ -119,7 +149,7 @@
 
 
             <div class="d-flex justify-content-center gap-3 mb-5">
-                <button class="btn btn-primary btn-lg rounded-pill px-4">
+                <button class="btn btn-primary btn-lg rounded-pill px-4" id="refreshButton">
                     <i class="fa-solid fa-info me-1"></i>
                     Info Terkini
                 </button>
@@ -147,7 +177,7 @@
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class=" display-6 fw-bolder py-3" id="time-fajr">--:--</h1>
+                                    <h1 class="display-6 fw-bolder py-3" id="time-fajr">--:--</h1>
                                 </div>
                             </div>
 
@@ -162,7 +192,7 @@
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class=" display-6 fw-bolder py-3" id="time-syuruk">--:--</h1>
+                                    <h1 class="display-6 fw-bolder py-3" id="time-syuruk">--:--</h1>
                                 </div>
                             </div>
 
@@ -177,7 +207,7 @@
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class=" display-6 fw-bolder py-3" id="time-dhuhr">--:--</h1>
+                                    <h1 class="display-6 fw-bolder py-3" id="time-dhuhr">--:--</h1>
                                 </div>
                             </div>
 
@@ -192,7 +222,7 @@
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class=" display-6 fw-bolder py-3" id="time-asr">--:--</h1>
+                                    <h1 class="display-6 fw-bolder py-3" id="time-asr">--:--</h1>
                                 </div>
                             </div>
 
@@ -207,7 +237,7 @@
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class=" display-6 fw-bolder py-3" id="time-maghrib">--:--</h1>
+                                    <h1 class="display-6 fw-bolder py-3" id="time-maghrib">--:--</h1>
                                 </div>
                             </div>
 
@@ -223,7 +253,7 @@
                                             <i class="fa-regular fa-moon"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class=" display-6 fw-bolder py-3" id="time-isha">--:--</h1>
+                                    <h1 class="display-6 fw-bolder py-3" id="time-isha">--:--</h1>
                                 </div>
                             </div>
 
@@ -234,11 +264,11 @@
                 </div>
             </div>
             <div class="col-md-2 d-inline-flex">
-                <div class="d-flex bg-primary-solid shadow-lg rounded-5 p-2 mx-auto justify-content-center" style="flex: auto;">
+                <div class="d-flex bg-primary-solid shadow-lg rounded-5 p-2 mx-auto justify-content-center clock-card">
                     <div class="row g-2 justify-content-center text-uppercase fw-bold">
                         <div class="col d-flex justify-content-center align-items-center">
 
-                            <h1 class="display-5 fw-bolder py-3 text-white" id="liveClock">00:00</h1>
+                            <h1 class="display-2 fw-bolder py-3 text-white bebas" id="liveClock">00:00</h1>
 
                         </div>
                     </div>
@@ -283,7 +313,7 @@
 
     <script>
         const hijriMonths = ["Muharam", "Safar", "Rabiul Awal", "Rabiul Akhir", "Jamadil Awal", "Jamadil Akhir", "Rejab", "Sya'ban", "Ramadan", "Syawal", "Zulkaedah", "Zulhijjah"];
-        const zoneNames = { "SGR01": "Selangor. Gombak, Petaling, Sepang, Hulu Langat, S.Alam", "SGR02": "Selangor. Kuala Selangor, Sabak Bernam", "SGR03": "Selangor. Klang, Kuala Langat", "JHR01": "Johor. Pulau Aur dan Pulau Pemanggil", "JHR02": "Johor. Johor Bahru, Kota Tinggi, Mersing", "MLK01": "Melaka. Melaka Tengah, Alor Gajah, Jasin", "WLY01": "Kuala Lumpur, Putrajaya" };
+        const zoneNames = { "SGR01": "Daerah Hulu Selangor, Gombak, Petaling, Sepang Dan Hulu Langat", "SGR02": "Daerah Sabak Bernam Dan Kuala Selangor", "SGR03": "Daerah Klang Dan Kuala Langat", "JHR01": "Johor. Pulau Aur dan Pulau Pemanggil", "JHR02": "Johor. Johor Bahru, Kota Tinggi, Mersing", "MLK01": "Melaka. Melaka Tengah, Alor Gajah, Jasin", "WLY01": "Kuala Lumpur, Putrajaya" };
 
         let currentZone = localStorage.getItem('azanZone') || 'SGR01';
         let prayerDataTimes = {};
@@ -301,27 +331,44 @@
             let currentActiveId = null;
             const sortedKeys = ['fajr', 'syuruk', 'dhuhr', 'asr', 'maghrib', 'isha'];
 
-            // 1. Determine which ID should be active
+            // 1. Determine which prayer time we are currently in
             for (let i = 0; i < sortedKeys.length; i++) {
                 const id = sortedKeys[i];
                 const prayerDate = prayerDataTimes[id];
-
                 if (prayerDate && now >= prayerDate) {
                     currentActiveId = id;
                 }
             }
 
-            // 2. Special Rule for Syuruk: If active for > 15 mins, move highlight to Zohor
+            // 2. Special Rule for Syuruk: After 15 mins, force highlight to Zohor
             if (currentActiveId === 'syuruk') {
                 const syurukTime = prayerDataTimes['syuruk'];
                 const diffInMinutes = (now - syurukTime) / 1000 / 60;
-
                 if (diffInMinutes >= 15) {
                     currentActiveId = 'dhuhr';
                 }
             }
 
-        
+            // 3. Apply Visual Classes
+            sortedKeys.forEach(id => {
+                const cardElement = document.getElementById(`time-${id}`).closest('.card');
+                
+                // Remove old states
+                cardElement.classList.remove('highlight-solid', 'blink-mode');
+
+                if (id === currentActiveId) {
+                    const startTime = prayerDataTimes[id];
+                    const diffInSeconds = (now - startTime) / 1000;
+
+                    // Blink for the first 60 seconds of entering prayer time
+                    // (We don't blink if it's the "forced" Zohor highlight from Syuruk)
+                    if (diffInSeconds >= 0 && diffInSeconds <= 60 && id !== 'dhuhr' || (id === 'dhuhr' && now >= prayerDataTimes['dhuhr'] && diffInSeconds <= 60)) {
+                        cardElement.classList.add('blink-mode');
+                    } else {
+                        cardElement.classList.add('highlight-solid');
+                    }
+                }
+            });
         }
 
         async function fetchPrayerTimes() {
@@ -375,6 +422,34 @@
         setInterval(updateClock, 1000);
         updateClock();
         fetchPrayerTimes();
+
+        function updateClock() {
+            const now = new Date();
+
+            document.getElementById('liveClock').innerText = now.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                // second: '2-digit',
+                hour12: true
+            });
+
+            document.getElementById('masihiDate').innerText = now.toLocaleDateString('ms-MY', {
+                // weekday: 'long', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric'
+            });
+
+            updateUIStates(now);
+        }
+
+        const refreshBtn = document.getElementById("refreshButton");
+        refreshBtn.addEventListener("click", function() {
+            window.location.reload();
+        });
+
+
+
     </script>
 
 
