@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AZAN - Waktu Solat 🕋</title>
+    <title>AZAN - Waktu Solat </title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@300;500&display=swap"
         rel="stylesheet">
@@ -23,7 +23,7 @@
         }
 
         .card {
-            border-radius: 16px;
+            border-radius: 20px;
             height: 200px;
         }
 
@@ -113,21 +113,21 @@
     <div class="container-fluid text-center">
         <div class="row">
             <div class="col-md">
-                <div class="glass-card rounded-5 p-4 mx-auto">
+                <div class=" rounded-5 p-4 mx-auto">
                     <div class="d-flex row g-2 justify-content-center fw-bold">
                         <div class="col-md-4 align-self-center">
                             <div class="text-start">
-                                <img src="assets/logo.png" alt="logo" width="200">
-                                <span class="fw-bold fs-5">Waktu Solat 🕋</span>
+                                <img src="assets/logo.png" alt="logo" width="250">
+                                <span class="fw-bold fs-4">Waktu Solat 🕋</span>
                             </div>
                         </div>
                         <div class="col-md-4 align-self-center">
                             <!-- <img src="assets/logo.png" alt="logo" width="200"> -->
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 align-self-start">
                             <div class="text-end">
-                                <span class="h1 display-5 fw-bolder bebas display" id="masihiDate">-- --- ----</span><br>
-                                <span class="h2 text-primary bebas" id="hijriDate">-- --- ----</span> <span class="h2 text-primary bebas">H</span><br>
+                                <span class="h1 display-2 fw-bolder bebas display" id="masihiDate">-- --- ----</span><br>
+                                <span class="h1 display-5 text-primary bebas" id="hijriDate">-- --- ----</span> <span class="h1 display-5 text-primary bebas">H</span><br>
                             </div>
                         </div>
                     </div>
@@ -178,6 +178,7 @@
                                         </div> -->
                                     </div>
                                     <h1 class="display-6 fw-bolder py-3" id="time-fajr">--:--</h1>
+                                    <h6 class="fw-bold" id="timer-fajr">--:--</h6>
                                 </div>
                             </div>
 
@@ -193,6 +194,7 @@
                                         </div> -->
                                     </div>
                                     <h1 class="display-6 fw-bolder py-3" id="time-syuruk">--:--</h1>
+                                    <h6 class="fw-bold" id="timer-syuruk">--:--</h6>
                                 </div>
                             </div>
 
@@ -208,6 +210,7 @@
                                         </div> -->
                                     </div>
                                     <h1 class="display-6 fw-bolder py-3" id="time-dhuhr">--:--</h1>
+                                    <h6 class="fw-bold" id="timer-dhuhr">--:--</h6>
                                 </div>
                             </div>
 
@@ -223,6 +226,7 @@
                                         </div> -->
                                     </div>
                                     <h1 class="display-6 fw-bolder py-3" id="time-asr">--:--</h1>
+                                    <h6 class="fw-bold" id="timer-asr">--:--</h6>
                                 </div>
                             </div>
 
@@ -238,6 +242,7 @@
                                         </div> -->
                                     </div>
                                     <h1 class="display-6 fw-bolder py-3" id="time-maghrib">--:--</h1>
+                                    <h6 class="fw-bold" id="timer-maghrib">--:--</h6>
                                 </div>
                             </div>
 
@@ -254,6 +259,7 @@
                                         </div> -->
                                     </div>
                                     <h1 class="display-6 fw-bolder py-3" id="time-isha">--:--</h1>
+                                    <h6 class="fw-bold" id="timer-isha">--:--</h6>
                                 </div>
                             </div>
 
@@ -266,9 +272,10 @@
             <div class="col-md-2 d-inline-flex">
                 <div class="d-flex bg-primary-solid shadow-lg rounded-5 p-2 mx-auto justify-content-center clock-card">
                     <div class="row g-2 justify-content-center text-uppercase fw-bold">
-                        <div class="col d-flex justify-content-center align-items-center">
+                        <div class="col justify-content-center align-self-center">
 
                             <h1 class="display-2 fw-bolder py-3 text-white bebas" id="liveClock">00:00</h1>
+                            <span class="h2 bebas" id="liveClock-second">00 seconds</span> <span class="h4 bebas">Seconds</span>
 
                         </div>
                     </div>
@@ -318,20 +325,36 @@
         let currentZone = localStorage.getItem('azanZone') || 'SGR01';
         let prayerDataTimes = {};
 
+        // ... existing constants (hijriMonths, zoneNames, etc.) ...
+
         function updateClock() {
             const now = new Date();
-            document.getElementById('liveClock').innerText = now.toLocaleTimeString('en-GB');
-            document.getElementById('masihiDate').innerText = now.toLocaleDateString('en-MY', {
-                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+            
+            // Display HH:MM
+            document.getElementById('liveClock').innerText = now.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
             });
+
+            // Display SS seconds
+            document.getElementById('liveClock-second').innerText = now.getSeconds().toString().padStart(2, '0') + " seconds";
+
+            document.getElementById('masihiDate').innerText = now.toLocaleDateString('ms-MY', {
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric'
+            });
+
             updateUIStates(now);
         }
 
         function updateUIStates(now) {
             let currentActiveId = null;
+            let nextPrayerId = null;
             const sortedKeys = ['fajr', 'syuruk', 'dhuhr', 'asr', 'maghrib', 'isha'];
 
-            // 1. Determine which prayer time we are currently in
+            // 1. Determine current active prayer
             for (let i = 0; i < sortedKeys.length; i++) {
                 const id = sortedKeys[i];
                 const prayerDate = prayerDataTimes[id];
@@ -340,7 +363,11 @@
                 }
             }
 
-            // 2. Special Rule for Syuruk: After 15 mins, force highlight to Zohor
+            // 2. Determine next prayer for the timer
+            // If we are past Isha, the next prayer is Fajr (technically tomorrow, but we'll show the gap)
+            nextPrayerId = sortedKeys.find(id => prayerDataTimes[id] > now);
+
+            // 3. Special Rule for Syuruk highlight
             if (currentActiveId === 'syuruk') {
                 const syurukTime = prayerDataTimes['syuruk'];
                 const diffInMinutes = (now - syurukTime) / 1000 / 60;
@@ -349,24 +376,37 @@
                 }
             }
 
-            // 3. Apply Visual Classes
+            // 4. Update UI for each card
             sortedKeys.forEach(id => {
                 const cardElement = document.getElementById(`time-${id}`).closest('.card');
+                const timerElement = document.getElementById(`timer-${id}`);
                 
-                // Remove old states
+                // Reset states
                 cardElement.classList.remove('highlight-solid', 'blink-mode');
+                timerElement.style.display = 'none'; // Hide all timers by default
 
+                // Highlight Active
                 if (id === currentActiveId) {
                     const startTime = prayerDataTimes[id];
                     const diffInSeconds = (now - startTime) / 1000;
 
-                    // Blink for the first 60 seconds of entering prayer time
-                    // (We don't blink if it's the "forced" Zohor highlight from Syuruk)
                     if (diffInSeconds >= 0 && diffInSeconds <= 60 && id !== 'dhuhr' || (id === 'dhuhr' && now >= prayerDataTimes['dhuhr'] && diffInSeconds <= 60)) {
                         cardElement.classList.add('blink-mode');
                     } else {
                         cardElement.classList.add('highlight-solid');
                     }
+                }
+
+                // Show timer ONLY for the NEXT prayer
+                if (id === nextPrayerId) {
+                    timerElement.style.display = 'block';
+                    const diffMs = prayerDataTimes[id] - now;
+                    const h = Math.floor(diffMs / 3600000);
+                    const m = Math.floor((diffMs % 3600000) / 60000);
+                    const s = Math.floor((diffMs % 60000) / 1000);
+                    
+                    timerElement.innerText = `-${h}h ${m}m ${s}s`;
+                    timerElement.classList.add('text-primary'); 
                 }
             });
         }
@@ -429,14 +469,17 @@
             document.getElementById('liveClock').innerText = now.toLocaleTimeString('en-US', {
                 hour: '2-digit',
                 minute: '2-digit',
-                // second: '2-digit',
                 hour12: true
             });
 
+            document.getElementById('liveClock-second').innerText = now.toLocaleTimeString('en-US', {
+                second: '2-digit',
+            });
+
             document.getElementById('masihiDate').innerText = now.toLocaleDateString('ms-MY', {
-                // weekday: 'long', 
+                // weekday: 'long',
                 year: 'numeric', 
-                month: 'short', 
+                month: 'long', 
                 day: 'numeric'
             });
 
