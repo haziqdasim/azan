@@ -204,10 +204,6 @@
             opacity: 1 !important;
         }
 
-        #cardUcapan {
-            display: none; /* Hide by default */
-        }
-
 
     </style>
 </head>
@@ -247,17 +243,17 @@
         <div class="content-wrapper position-relative">
             <div class="row">
                 <div class="col-md-2" style="justify-content: center;">
-                    <div class="card shadow-lg align-self-center" id="cardUcapan" style="height: fit-content">
-                        <!-- <div class="card-header">
+                    <!-- <div class="card shadow-lg align-self-center" id="cardUcapan" style="height: fit-content">
+                        <div class="card-header">
                             <span class="inter-medium fs-5">📢 Ucapan</span>
-                        </div> -->
+                        </div>
                         <div class="card-body">
                             <span id="textUcapan" class="fs-5">...</span>
                         </div>
                         <div class="progress" style="height: 5px; border-radius: 0;">
                             <div id="timerBar" class="progress-bar bg-primary" role="progressbar" style="width: 100%;"></div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-md-8">
                     <span class="badge rounded-pill border px-4 py-3 mb-4 text-primary">
@@ -278,10 +274,6 @@
                             data-bs-target="#settingsModal">
                             <i class="fa-solid fa-map-location-dot me-1"></i>
                             <span class="inter-medium">Pilih Zon</span>
-                        </button>
-                        <button type="button" class="btn btn-light btn-lg rounded-pill px-4" data-bs-toggle="modal"
-                            data-bs-target="#ucapan">
-                            <span class="inter-medium">Ucapan</span>
                         </button>
                     </div>
                 </div>
@@ -408,8 +400,8 @@
                 <div class="d-flex bg-primary-solid shadow-lg rounded-5 p-2 mx-auto justify-content-center clock-card">
                     <div class="row g-2 justify-content-center text-uppercase fw-bold">
                         <div class="col justify-content-center align-self-center">
-                            <h1 class="display-2 fw-bolder py-3 text-white bebas"
-                                style="line-height: 20px; letter-spacing: 2px" id="liveClock">
+                            <h1 class="display-3 fw-bolder py-3 text-white bebas"
+                                style="letter-spacing: 2px" id="liveClock">
                                 00:00
                             </h1>
                         </div>
@@ -462,28 +454,7 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="ucapan" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Hantar Ucapan</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="inputUcapan" class="form-label">Mesej Anda</label>
-                        <textarea class="form-control" id="inputUcapan" rows="3" placeholder="Taip ucapan di sini..."></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary rounded-pill px-4" onclick="submitUcapan()">
-                        Paparkan Ucapan
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <script>
         const hijriMonths = [
