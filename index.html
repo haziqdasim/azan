@@ -143,8 +143,10 @@
         /* Circular progress container */
         .clock-card {
             position: relative;
-            background: white; /* Fallback */
-            transition: background 0.2s ease;
+            background: white; 
+            /* This makes the gradient transition smoothly */
+            transition: background 0.1s linear; 
+            flex: auto;
         }
 
         /* Optional: Add a mask to make it look like a ring instead of a full circle */
@@ -217,8 +219,8 @@
                         <div class="col-md-4 align-self-center">
                             <div class="text-start">
                                 <img src="assets/logo.png" alt="logo" width="250" />
-                                <span class="inter-bold fs-5" style="letter-spacing: -1px">Waktu Solat 🕋
-                                    <small class="fs-5 inter-bold opacity-25">v1.1.2</small>
+                                <span class="inter-bold fs-4" style="letter-spacing: -1px">Waktu Solat 🕋
+                                    <small class="fs-4 inter-bold opacity-25">v1.1.2</small>
                                 </span>
                             </div>
                         </div>
@@ -647,11 +649,10 @@
             const seconds = now.getSeconds();
             const milliseconds = now.getMilliseconds();
             
-            // Calculate total progress of the current minute (0 to 360 degrees)
-            // Using milliseconds makes the rotation smooth rather than ticking
+            // 1. Smooth Rotation Logic
+            // Using (seconds + ms/1000) creates a float (e.g., 5.4s) for sub-pixel smoothness
             const degree = ((seconds + milliseconds / 1000) / 60) * 360;
 
-            // Apply the angular gradient to the clock card
             const clockCard = document.querySelector(".clock-card");
             if (clockCard) {
                 clockCard.style.background = `conic-gradient(
@@ -660,31 +661,36 @@
                 )`;
             }
 
-            // Display HH:MM
-            document.getElementById("liveClock").innerText = now.toLocaleTimeString(
-                "en-US",
-                {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    hour12: true,
-                }
-            );
-
-            // Update the ID to show numeric seconds as fallback or remove if not needed
-            // Setting it to just the number since the "Saat" text is already in the HTML
+            // 2. Text Clock Update (HH:MM)
+            const timeString = now.toLocaleTimeString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: true,
+            });
             
-            // saat pada liveclock
-            // document.getElementById("liveClock-second").innerText = seconds.toString().padStart(2, "0");
+            if (document.getElementById("liveClock").innerText !== timeString) {
+                document.getElementById("liveClock").innerText = timeString;
+            }
 
-            document.getElementById("masihiDate").innerText =
-                now.toLocaleDateString("ms-MY", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                });
+            // 3. Date Updates
+            document.getElementById("masihiDate").innerText = now.toLocaleDateString("ms-MY", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+            });
 
+            // Keep the UI states (highlights/timers) updated
             updateUIStates(now);
+
+            // Call the next frame for ultra-smooth movement
+            requestAnimationFrame(updateClock);
         }
+
+        // Start the smooth loop
+        requestAnimationFrame(updateClock);
+
+        // Fetch prayer times separately so they don't run 60 times a second
+        setInterval(fetchPrayerTimes, 600000); // Refresh data every 10 mins
 
         const refreshBtn = document.getElementById("refreshButton");
         refreshBtn.addEventListener("click", function () {
