@@ -11,16 +11,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <style>
-        @font-face {
+        /* @font-face {
             font-family: "bebas";
             src: url("fonts/BebasNeue.woff") format("woff"),
                 url("fonts/BebasNeue.woff2") format("woff2"),
+                url("fonts/BebasNeue-Bold.woff") format("woff"),
+                url("fonts/BebasNeue-Bold.woff2") format("woff2"),
                 url("fonts/Inter-Medium.woff2") format("woff2"),
                 url("fonts/Inter-Bold.woff2") format("woff2"),
                 url("fonts/Inter-Black.woff2") format("woff2");
             font-weight: normal;
             font-style: normal;
+        } */
+
+        @font-face {
+            font-family: "bebas";
+            src: url("fonts/BebasNeue.woff") format("woff"),
+                url("fonts/BebasNeue.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
         }
+
+        /* @font-face {
+            font-family: "bebas-bold";
+            src: url("fonts/BebasNeue-Bold.woff") format("woff");
+            font-weight: 800;
+            font-style: normal;
+        } */
 
         @font-face {
             font-family: "inter-medium";
@@ -57,7 +74,7 @@
         }
 
         .card {
-            border-radius: 20px;
+            border-radius: 13px;
             height: 200px;
         }
 
@@ -98,9 +115,15 @@
 
         .bebas {
             font-family: "bebas";
-            src: url("fonts/BebasNeue.woff") format("woff"),
-                url("fonts/BebasNeue.woff2") format("woff2");
+            src: url("fonts/BebasNeue.woff2") format("woff2");
             font-weight: normal;
+            font-style: normal;
+        }
+
+        .bebas-bold {
+            font-family: "bebas-bold";
+            src: url("fonts/BebasNeue-Bold.woff2") format("woff2");
+            font-weight: 800;
             font-style: normal;
         }
 
@@ -134,6 +157,29 @@
 
         .clock-card {
             flex: auto;
+        }
+
+        /* Circular progress container */
+        .clock-card {
+            position: relative;
+            background: white; /* Fallback */
+            transition: background 0.2s ease;
+        }
+
+        /* Optional: Add a mask to make it look like a ring instead of a full circle */
+        .clock-card::after {
+            content: "";
+            position: absolute;
+            inset: 25px; /* Thickness of the ring */
+            background: #0268a2; /* Matches your solid primary color */
+            border-radius: 13px;
+            z-index: 1;
+        }
+
+        /* Ensure text stays above the ring */
+        .clock-card > div {
+            position: relative;
+            z-index: 2;
         }
 
         /* Blinking Animation */
@@ -188,8 +234,8 @@
                         <div class="col-md-4 align-self-center">
                             <div class="text-start">
                                 <img src="assets/logo.png" alt="logo" width="250" />
-                                <span class="inter-medium fs-4" style="letter-spacing: -1px">Waktu Solat 🕋
-                                    <small class="inter-medium opacity-25">v1.1</small>
+                                <span class="inter-bold fs-5" style="letter-spacing: -1px">Waktu Solat 🕋
+                                    <small class="fs-5 inter-bold opacity-25">v1.1.1</small>
                                 </span>
                             </div>
                         </div>
@@ -213,8 +259,8 @@
     <div class="container-fluid text-center">
         <div class="content-wrapper position-relative">
             <div class="row">
-                <div class="col-md-2">
-                    <!-- <div class="card shadow-lg">
+                <div class="col-md-2" style="justify-content: center;">
+                    <!-- <div class="card shadow-lg align-self-center" style="height: fit-content">
                         <div class="card-header">
                             <span class="inter-medium">📢Pengumuman</span>
                         </div>
@@ -245,14 +291,15 @@
                         </button>
                     </div>
                 </div>
-                <div class="col-md-2 d-flex">
+                <div class="col-md-2 d-flex" style="justify-content: center;">
                     <div class="card shadow-lg align-self-center" style="height: fit-content">
                         <div class="card-body" id="prayerReminder">
-                            <span class="inter-medium h4">✨</span><br />
-                            <span class="display-5 bebas" style="letter-spacing: -1px;" id="timerPrayer">0 Minit 0 Saat</span><br />
-                            <span class="h6 inter-medium">sebelum masuk waktu</span><span
+                            <span class="inter-medium h4">✨✨✨</span><br>
+                            <span class="display-5 inter-bold" style="letter-spacing: -1px;" id="timerPrayer">0M 0s</span><br />
+                            <span class="h6 inter-medium">Sebelum Masuk Waktu</span><span
                                 class="inter-bold"></span><br />
-                            <span class="display-5 bebas" style="letter-spacing: -1px;" id="nextPrayer">Asar</span>
+                            <span class="display-5 inter-bold" style="letter-spacing: -1px;" id="nextPrayer">Asar</span><br>
+                            <span class="inter-medium h4">✨✨✨</span>
                         </div>
                     </div>
                 </div>
@@ -274,7 +321,7 @@
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-fajr">
+                                    <h1 class="display-3 fw-bolder py-3 bebas" id="time-fajr">
                                         --:--
                                     </h1>
                                     <h6 class="inter-bold" id="timer-fajr">--:--</h6>
@@ -290,7 +337,7 @@
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-syuruk">
+                                    <h1 class="display-3 fw-bolder py-3 bebas" id="time-syuruk">
                                         --:--
                                     </h1>
                                     <h6 class="inter-bold" id="timer-syuruk">--:--</h6>
@@ -306,7 +353,7 @@
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-dhuhr">
+                                    <h1 class="display-3 fw-bolder py-3 bebas" id="time-dhuhr">
                                         --:--
                                     </h1>
                                     <h6 class="inter-bold" id="timer-dhuhr">--:--</h6>
@@ -322,7 +369,7 @@
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-asr">
+                                    <h1 class="display-3 fw-bolder py-3 bebas" id="time-asr">
                                         --:--
                                     </h1>
                                     <h6 class="inter-bold" id="timer-asr">--:--</h6>
@@ -338,7 +385,7 @@
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-maghrib">
+                                    <h1 class="display-3 fw-bolder py-3 bebas" id="time-maghrib">
                                         --:--
                                     </h1>
                                     <h6 class="inter-bold" id="timer-maghrib">--:--</h6>
@@ -355,7 +402,7 @@
                                             <i class="fa-regular fa-moon"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-isha">
+                                    <h1 class="display-3 fw-bolder py-3 bebas" id="time-isha">
                                         --:--
                                     </h1>
                                     <h6 class="inter-bold" id="timer-isha">--:--</h6>
@@ -373,8 +420,8 @@
                                 style="line-height: 20px; letter-spacing: 2px" id="liveClock">
                                 00:00
                             </h1>
-                            <span class="h1 display-4 bebas" id="liveClock-second">00 Saat</span>
-                            <span class="h1 bebas" style="letter-spacing: 1px">Saat</span>
+                            <!-- <span class="h1 display-4 bebas" id="liveClock-second">00 Saat</span>
+                            <span class="h1 bebas" style="letter-spacing: 1px">Saat</span> -->
                         </div>
                     </div>
                 </div>
@@ -468,8 +515,7 @@
             );
 
             // Display SS seconds
-            document.getElementById("liveClock-second").innerText =
-                now.getSeconds().toString().padStart(2, "0") + " seconds";
+            document.getElementById("liveClock-second").innerText = now.getSeconds().toString().padStart(2, "0") + " seconds";
 
             document.getElementById("masihiDate").innerText =
                 now.toLocaleDateString("ms-MY", {
@@ -508,14 +554,14 @@
                 const diffMinutes = diffMs / 1000 / 60;
 
                 // Show card only if within 5 minutes (300,000 ms)
-                if (diffMinutes > 0 && diffMinutes <= 5) {
+                if (diffMinutes > 0 && diffMinutes <= 10) {
                     reminderCard.style.display = "block";
 
                     // Calculate MM:SS
                     const m = Math.floor((diffMs % 3600000) / 60000);
                     const s = Math.floor((diffMs % 60000) / 1000);
 
-                    document.getElementById("timerPrayer").innerText = `${m} Minit ${s} Saat`;
+                    document.getElementById("timerPrayer").innerText = `${m}m ${s}s`;
 
                     // Map ID to Display Name
                     const names = { fajr: "Subuh", dhuhr: "Zohor", asr: "Asar", maghrib: "Maghrib", isha: "Isyak" };
@@ -631,7 +677,23 @@
 
         function updateClock() {
             const now = new Date();
+            const seconds = now.getSeconds();
+            const milliseconds = now.getMilliseconds();
+            
+            // Calculate total progress of the current minute (0 to 360 degrees)
+            // Using milliseconds makes the rotation smooth rather than ticking
+            const degree = ((seconds + milliseconds / 1000) / 60) * 360;
 
+            // Apply the angular gradient to the clock card
+            const clockCard = document.querySelector(".clock-card");
+            if (clockCard) {
+                clockCard.style.background = `conic-gradient(
+                    rgba(255, 255, 255, 0.8) ${degree}deg, 
+                    rgba(255, 255, 255, 0.2) ${degree}deg
+                )`;
+            }
+
+            // Display HH:MM
             document.getElementById("liveClock").innerText = now.toLocaleTimeString(
                 "en-US",
                 {
@@ -641,14 +703,14 @@
                 }
             );
 
-            document.getElementById("liveClock-second").innerText =
-                now.toLocaleTimeString("en-US", {
-                    second: "2-digit",
-                });
+            // Update the ID to show numeric seconds as fallback or remove if not needed
+            // Setting it to just the number since the "Saat" text is already in the HTML
+            
+            // saat pada liveclock
+            // document.getElementById("liveClock-second").innerText = seconds.toString().padStart(2, "0");
 
             document.getElementById("masihiDate").innerText =
                 now.toLocaleDateString("ms-MY", {
-                    // weekday: 'long',
                     year: "numeric",
                     month: "long",
                     day: "numeric",
