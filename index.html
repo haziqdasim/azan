@@ -11,18 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <style>
-        /* @font-face {
-            font-family: "bebas";
-            src: url("fonts/BebasNeue.woff") format("woff"),
-                url("fonts/BebasNeue.woff2") format("woff2"),
-                url("fonts/BebasNeue-Bold.woff") format("woff"),
-                url("fonts/BebasNeue-Bold.woff2") format("woff2"),
-                url("fonts/Inter-Medium.woff2") format("woff2"),
-                url("fonts/Inter-Bold.woff2") format("woff2"),
-                url("fonts/Inter-Black.woff2") format("woff2");
-            font-weight: normal;
-            font-style: normal;
-        } */
 
         @font-face {
             font-family: "bebas";
@@ -31,13 +19,6 @@
             font-weight: 400;
             font-style: normal;
         }
-
-        /* @font-face {
-            font-family: "bebas-bold";
-            src: url("fonts/BebasNeue-Bold.woff") format("woff");
-            font-weight: 800;
-            font-style: normal;
-        } */
 
         @font-face {
             font-family: "inter-medium";
@@ -222,6 +203,12 @@
             color: white !important;
             opacity: 1 !important;
         }
+
+        #cardUcapan {
+            display: none; /* Hide by default */
+        }
+
+
     </style>
 </head>
 
@@ -235,7 +222,7 @@
                             <div class="text-start">
                                 <img src="assets/logo.png" alt="logo" width="250" />
                                 <span class="inter-bold fs-5" style="letter-spacing: -1px">Waktu Solat 🕋
-                                    <small class="fs-5 inter-bold opacity-25">v1.1.1</small>
+                                    <small class="fs-5 inter-bold opacity-25">v1.1.2</small>
                                 </span>
                             </div>
                         </div>
@@ -260,14 +247,17 @@
         <div class="content-wrapper position-relative">
             <div class="row">
                 <div class="col-md-2" style="justify-content: center;">
-                    <!-- <div class="card shadow-lg align-self-center" style="height: fit-content">
-                        <div class="card-header">
-                            <span class="inter-medium">📢Pengumuman</span>
-                        </div>
+                    <div class="card shadow-lg align-self-center" id="cardUcapan" style="height: fit-content">
+                        <!-- <div class="card-header">
+                            <span class="inter-medium fs-5">📢 Ucapan</span>
+                        </div> -->
                         <div class="card-body">
-                            
+                            <span id="textUcapan" class="fs-5">...</span>
                         </div>
-                    </div> -->
+                        <div class="progress" style="height: 5px; border-radius: 0;">
+                            <div id="timerBar" class="progress-bar bg-primary" role="progressbar" style="width: 100%;"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-8">
                     <span class="badge rounded-pill border px-4 py-3 mb-4 text-primary">
@@ -289,17 +279,19 @@
                             <i class="fa-solid fa-map-location-dot me-1"></i>
                             <span class="inter-medium">Pilih Zon</span>
                         </button>
+                        <button type="button" class="btn btn-light btn-lg rounded-pill px-4" data-bs-toggle="modal"
+                            data-bs-target="#ucapan">
+                            <span class="inter-medium">Ucapan</span>
+                        </button>
                     </div>
                 </div>
                 <div class="col-md-2 d-flex" style="justify-content: center;">
                     <div class="card shadow-lg align-self-center" style="height: fit-content">
                         <div class="card-body" id="prayerReminder">
-                            <span class="inter-medium h4">✨✨✨</span><br>
                             <span class="display-5 inter-bold" style="letter-spacing: -1px;" id="timerPrayer">0M 0s</span><br />
-                            <span class="h6 inter-medium">Sebelum Masuk Waktu</span><span
+                            <span class="h5 inter-medium">Sebelum Masuk Waktu</span><span
                                 class="inter-bold"></span><br />
                             <span class="display-5 inter-bold" style="letter-spacing: -1px;" id="nextPrayer">Asar</span><br>
-                            <span class="inter-medium h4">✨✨✨</span>
                         </div>
                     </div>
                 </div>
@@ -316,12 +308,12 @@
                             <div class="card text-center">
                                 <div class="card-body-custom">
                                     <div class="d-flex justify-content-center">
-                                        <span class="opacity-50 fs-5 inter-bold">Subuh</span>
+                                        <span class="opacity-50 fs-4 inter-bold">Subuh</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-3 fw-bolder py-3 bebas" id="time-fajr">
+                                    <h1 class="display-3 fw-bolder bebas" id="time-fajr">
                                         --:--
                                     </h1>
                                     <h6 class="inter-bold" id="timer-fajr">--:--</h6>
@@ -332,12 +324,12 @@
                             <div class="card text-center">
                                 <div class="card-body-custom">
                                     <div class="d-flex justify-content-center">
-                                        <span class="opacity-50 fs-5 inter-bold">Syuruk</span>
+                                        <span class="opacity-50 fs-4 inter-bold">Syuruk</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-3 fw-bolder py-3 bebas" id="time-syuruk">
+                                    <h1 class="display-3 fw-bolder bebas" id="time-syuruk">
                                         --:--
                                     </h1>
                                     <h6 class="inter-bold" id="timer-syuruk">--:--</h6>
@@ -348,12 +340,12 @@
                             <div class="card text-center">
                                 <div class="card-body-custom">
                                     <div class="d-flex justify-content-center">
-                                        <span class="opacity-50 fs-5 inter-bold">Zohor</span>
+                                        <span class="opacity-50 fs-4 inter-bold">Zohor</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-3 fw-bolder py-3 bebas" id="time-dhuhr">
+                                    <h1 class="display-3 fw-bolder bebas" id="time-dhuhr">
                                         --:--
                                     </h1>
                                     <h6 class="inter-bold" id="timer-dhuhr">--:--</h6>
@@ -364,12 +356,12 @@
                             <div class="card text-center">
                                 <div class="card-body-custom">
                                     <div class="d-flex justify-content-center">
-                                        <span class="opacity-50 fs-5 inter-bold">Asar</span>
+                                        <span class="opacity-50 fs-4 inter-bold">Asar</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-3 fw-bolder py-3 bebas" id="time-asr">
+                                    <h1 class="display-3 fw-bolder bebas" id="time-asr">
                                         --:--
                                     </h1>
                                     <h6 class="inter-bold" id="timer-asr">--:--</h6>
@@ -380,12 +372,12 @@
                             <div class="card text-center">
                                 <div class="card-body-custom">
                                     <div class="d-flex justify-content-center">
-                                        <span class="opacity-50 fs-5 inter-bold">Maghrib</span>
+                                        <span class="opacity-50 fs-4 inter-bold">Maghrib</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-3 fw-bolder py-3 bebas" id="time-maghrib">
+                                    <h1 class="display-3 fw-bolder bebas" id="time-maghrib">
                                         --:--
                                     </h1>
                                     <h6 class="inter-bold" id="timer-maghrib">--:--</h6>
@@ -397,12 +389,12 @@
                             <div class="card text-center">
                                 <div class="card-body-custom">
                                     <div class="d-flex justify-content-center">
-                                        <span class="opacity-50 fs-5 inter-bold">Ishak</span>
+                                        <span class="opacity-50 fs-4 inter-bold">Ishak</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-moon"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-3 fw-bolder py-3 bebas" id="time-isha">
+                                    <h1 class="display-3 fw-bolder bebas" id="time-isha">
                                         --:--
                                     </h1>
                                     <h6 class="inter-bold" id="timer-isha">--:--</h6>
@@ -420,14 +412,14 @@
                                 style="line-height: 20px; letter-spacing: 2px" id="liveClock">
                                 00:00
                             </h1>
-                            <!-- <span class="h1 display-4 bebas" id="liveClock-second">00 Saat</span>
-                            <span class="h1 bebas" style="letter-spacing: 1px">Saat</span> -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- modal -->
 
     <div class="modal fade" id="settingsModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -465,6 +457,28 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary rounded-pill px-4" onclick="saveSettings()">
                         Tukar Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ucapan" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hantar Ucapan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="inputUcapan" class="form-label">Mesej Anda</label>
+                        <textarea class="form-control" id="inputUcapan" rows="3" placeholder="Taip ucapan di sini..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary rounded-pill px-4" onclick="submitUcapan()">
+                        Paparkan Ucapan
                     </button>
                 </div>
             </div>
@@ -723,6 +737,59 @@
         refreshBtn.addEventListener("click", function () {
             window.location.reload();
         });
+
+        let ucapanTimer = null; // Variable to store the interval
+
+        function submitUcapan() {
+            const inputField = document.getElementById("inputUcapan");
+            const displayCard = document.getElementById("cardUcapan");
+            const displayText = document.getElementById("textUcapan");
+            const timerBar = document.getElementById("timerBar");
+            const ucapanModal = bootstrap.Modal.getInstance(document.getElementById('ucapan'));
+
+            if (inputField.value.trim() !== "") {
+                // Clear any existing active timers
+                clearInterval(ucapanTimer);
+
+                // 1. Setup Content
+                displayText.innerText = inputField.value;
+                displayCard.style.display = "block";
+                displayCard.style.opacity = "1";
+                
+                // 2. Hide the modal
+                ucapanModal.hide();
+
+                // 3. Timer Logic (10 seconds)
+                let timeLeft = 100; // Percentage
+                const duration = 10000; // 10 seconds total
+                const intervalTime = 100; // Update every 100ms
+                const step = (intervalTime / duration) * 100;
+
+                ucapanTimer = setInterval(() => {
+                    timeLeft -= step;
+                    timerBar.style.width = timeLeft + "%";
+
+                    if (timeLeft <= 0) {
+                        clearInterval(ucapanTimer);
+                        
+                        // Fade out and Reset
+                        displayCard.style.transition = "opacity 0.5s ease";
+                        displayCard.style.opacity = "0";
+
+                        setTimeout(() => {
+                            displayCard.style.display = "none";
+                            timerBar.style.width = "100%"; // Reset bar for next time
+                            displayText.innerText = "...";
+                            inputField.value = "";
+                        }, 500);
+                    }
+                }, intervalTime);
+
+            } else {
+                alert("Sila masukkan ucapan terlebih dahulu.");
+            }
+        }
+
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
