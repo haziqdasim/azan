@@ -2,43 +2,43 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AZAN - Waktu Solat </title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AZAN - Waktu Solat</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@300;500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <style>
         @font-face {
-            font-family: 'bebas';
-            src: url('fonts/BebasNeue.woff') format('woff'),
-            url('fonts/BebasNeue.woff2') format('woff2'), 
-            url('fonts/Inter-Medium.woff2') format('woff2'),
-            url('fonts/Inter-Bold.woff2') format('woff2'),
-            url('fonts/Inter-Black.woff2') format('woff2');
+            font-family: "bebas";
+            src: url("fonts/BebasNeue.woff") format("woff"),
+                url("fonts/BebasNeue.woff2") format("woff2"),
+                url("fonts/Inter-Medium.woff2") format("woff2"),
+                url("fonts/Inter-Bold.woff2") format("woff2"),
+                url("fonts/Inter-Black.woff2") format("woff2");
             font-weight: normal;
             font-style: normal;
         }
 
         @font-face {
-            font-family: 'inter-medium';
-            src: url('fonts/Inter-Medium.woff2') format('woff2');
+            font-family: "inter-medium";
+            src: url("fonts/Inter-Medium.woff2") format("woff2");
             font-weight: 500;
             font-style: normal;
         }
 
         @font-face {
-            font-family: 'inter-bold';
-            src: url('fonts/Inter-Bold.woff2') format('woff2');
+            font-family: "inter-bold";
+            src: url("fonts/Inter-Bold.woff2") format("woff2");
             font-weight: 800;
             font-style: normal;
         }
 
         @font-face {
-            font-family: 'inter-black';
-            src: url('fonts/Inter-Black.woff2') format('woff2');
+            font-family: "inter-black";
+            src: url("fonts/Inter-Black.woff2") format("woff2");
             font-weight: 900;
             font-style: normal;
         }
@@ -46,9 +46,11 @@
         body {
             background-color: white;
             color: black;
-            font-family: 'Inter', 'bebas', sans-serif;
+            font-family: "Inter", "bebas", sans-serif;
             overflow-x: hidden;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('assets/bg.webp');
+            background-image: linear-gradient(rgba(255, 255, 255, 0.8),
+                    rgba(255, 255, 255, 0.8)),
+                url("assets/bg.webp");
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -82,61 +84,74 @@
 
         .glass-card {
             /* The "Glass" effect */
-            background: rgba(255, 255, 255, 0.15); /* Translucent white */
-            backdrop-filter: blur(12px) saturate(180%); /* The blur + color boost */
+            background: rgba(255, 255, 255, 0.15);
+            /* Translucent white */
+            backdrop-filter: blur(12px) saturate(180%);
+            /* The blur + color boost */
             -webkit-backdrop-filter: blur(12px) saturate(180%);
-            
-             
-            
+
             /* "Liquid" Sheen */
-            background: linear-gradient(
-                135deg, 
-                rgba(255, 255, 255, 0.2) 0%, 
-                rgba(255, 255, 255, 0.05) 100%
-            );
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.2) 0%,
+                    rgba(255, 255, 255, 0.05) 100%);
         }
 
-        .bebas{
-            font-family: 'bebas';
-            src: url('fonts/BebasNeue.woff') format('woff'), url('fonts/BebasNeue.woff2') format('woff2');
+        .bebas {
+            font-family: "bebas";
+            src: url("fonts/BebasNeue.woff") format("woff"),
+                url("fonts/BebasNeue.woff2") format("woff2");
             font-weight: normal;
             font-style: normal;
         }
 
-        .inter-black{
-            font-family: 'inter-black';
-            src: url('fonts/Inter-Black.woff2') format('woff2');
+        .inter-black {
+            font-family: "inter-black";
+            src: url("fonts/Inter-Black.woff2") format("woff2");
             font-weight: 900;
             font-style: normal;
         }
 
-        .inter-bold{
-            font-family: 'inter-bold';
-            src: url('fonts/Inter-Bold.woff2') format('woff2');
+        .inter-bold {
+            font-family: "inter-bold";
+            src: url("fonts/Inter-Bold.woff2") format("woff2");
             font-weight: 800;
             font-style: normal;
         }
 
-        .inter-medium{
-            font-family: 'inter-medium';
-            src: url('fonts/Inter-Medium.woff2') format('woff2');
+        .inter-medium {
+            font-family: "inter-medium";
+            src: url("fonts/Inter-Medium.woff2") format("woff2");
             font-weight: 500;
             font-style: normal;
         }
 
-        .card-body{
+        .card-body-custom {
             align-content: center;
+            flex: 1 1 auto;
+            padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+            color: var(--bs-card-color);
         }
 
-        .clock-card{
+        .clock-card {
             flex: auto;
         }
 
         /* Blinking Animation */
         @keyframes blink-active {
-            0% { opacity: 1; transform: scale(1.02); }
-            50% { opacity: 0.7; transform: scale(1.0); }
-            100% { opacity: 1; transform: scale(1.02); }
+            0% {
+                opacity: 1;
+                transform: scale(1.02);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1.02);
+            }
         }
 
         .blink-mode {
@@ -156,25 +171,26 @@
         }
 
         /* Ensure text is visible in highlight */
-        .highlight-solid .opacity-50, .blink-mode .opacity-50 {
+        .highlight-solid .opacity-50,
+        .blink-mode .opacity-50 {
             color: white !important;
             opacity: 1 !important;
         }
-
     </style>
 </head>
 
 <body class="vh-100 d-flex align-content-between flex-wrap p-2">
-
     <div class="container-fluid text-center">
         <div class="row">
             <div class="col-md">
-                <div class=" rounded-5 p-4 mx-auto">
+                <div class="rounded-5 p-4 mx-auto">
                     <div class="d-flex row g-2 justify-content-center fw-bold">
                         <div class="col-md-4 align-self-center">
                             <div class="text-start">
-                                <img src="assets/logo.png" alt="logo" width="250">
-                                <span class="inter-medium fs-4" style="letter-spacing: -1px;">Waktu Solat 🕋 <small class="inter-medium opacity-25">v1.1</small> </span>
+                                <img src="assets/logo.png" alt="logo" width="250" />
+                                <span class="inter-medium fs-4" style="letter-spacing: -1px">Waktu Solat 🕋
+                                    <small class="inter-medium opacity-25">v1.1</small>
+                                </span>
                             </div>
                         </div>
                         <div class="col-md-4 align-self-center">
@@ -182,8 +198,10 @@
                         </div>
                         <div class="col-md-4 align-self-start">
                             <div class="text-end">
-                                <span class="h1 display-2 fw-bolder bebas display" style="letter-spacing: 1px;" id="masihiDate">-- --- ----</span><br>
-                                <span class="h1 display-5 text-primary bebas" id="hijriDate">-- --- ----</span> <span class="h1 display-5 text-primary bebas">H</span><br>
+                                <span class="h1 display-2 fw-bolder bebas display" style="letter-spacing: 1px"
+                                    id="masihiDate">-- --- ----</span><br />
+                                <span class="h1 display-5 text-primary bebas" id="hijriDate">-- --- ----</span>
+                                <span class="h1 display-5 text-primary bebas">H</span><br />
                             </div>
                         </div>
                     </div>
@@ -193,154 +211,176 @@
     </div>
 
     <div class="container-fluid text-center">
-        <div class="container content-wrapper position-relative">
-            <span class="badge rounded-pill border px-4 py-3 mb-4 text-primary">
-                <i class="fs-5 fa-solid fa-mosque me-1"></i>
-                <span class="h6">Portal Waktu Solat</span>
-            </span>
-            <h1 class="inter-black text-navy" style="font-size: 96px; letter-spacing: -3px;">
-                Waktu Solat 🕋
-            </h1>
-            <p class="lead text-muted mb-5 inter-medium" id="currentZone"></p>
+        <div class="content-wrapper position-relative">
+            <div class="row">
+                <div class="col-md-2">
+                    <!-- <div class="card shadow-lg">
+                        <div class="card-header">
+                            <span class="inter-medium">📢Pengumuman</span>
+                        </div>
+                        <div class="card-body">
+                            
+                        </div>
+                    </div> -->
+                </div>
+                <div class="col-md-8">
+                    <span class="badge rounded-pill border px-4 py-3 mb-4 text-primary">
+                        <i class="fs-5 fa-solid fa-mosque me-1"></i>
+                        <span class="h6 inter-medium">Portal Waktu Solat</span>
+                    </span>
+                    <h1 class="inter-black text-navy" style="font-size: 96px; letter-spacing: -3px">
+                        Waktu Solat 🕋
+                    </h1>
+                    <p class="lead text-muted mb-5 inter-medium" id="currentZone"></p>
 
-
-            <div class="d-flex justify-content-center gap-3 mb-5">
-                <button class="btn btn-primary btn-lg rounded-pill px-4" id="refreshButton">
-                    <i class="fa-solid fa-info me-1"></i>
-                    <span class="inter-medium">Info Terkini</span>
-                </button>
-                <button type="button" class="btn btn-light btn-lg rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#settingsModal">
-                    <i class="fa-solid fa-map-location-dot me-1"></i>
-                    <span class="inter-medium">Pilih Zon</span>
-                </button>
+                    <div class="d-flex justify-content-center gap-3 mb-5">
+                        <button class="btn btn-primary btn-lg rounded-pill px-4" id="refreshButton">
+                            <i class="fa-solid fa-info me-1"></i>
+                            <span class="inter-medium">Info Terkini</span>
+                        </button>
+                        <button type="button" class="btn btn-light btn-lg rounded-pill px-4" data-bs-toggle="modal"
+                            data-bs-target="#settingsModal">
+                            <i class="fa-solid fa-map-location-dot me-1"></i>
+                            <span class="inter-medium">Pilih Zon</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-2 d-flex">
+                    <div class="card shadow-lg align-self-center" style="height: fit-content">
+                        <div class="card-body" id="prayerReminder">
+                            <span class="inter-medium h4">✨</span><br />
+                            <span class="display-5 bebas" style="letter-spacing: -1px;" id="timerPrayer">0 Minit 0 Saat</span><br />
+                            <span class="h6 inter-medium">sebelum masuk waktu</span><span
+                                class="inter-bold"></span><br />
+                            <span class="display-5 bebas" style="letter-spacing: -1px;" id="nextPrayer">Asar</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="container-fluid text-center">
-        
         <div class="row">
             <div class="col-md-10">
                 <div class="bg-white shadow-lg rounded-5 p-4 mx-auto">
                     <div class="row g-2 justify-content-center text-uppercase fw-bold d-flex">
                         <div class="col">
-
                             <div class="card text-center">
-                                <div class="card-body">
+                                <div class="card-body-custom">
                                     <div class="d-flex justify-content-center">
                                         <span class="opacity-50 fs-5 inter-bold">Subuh</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-fajr">--:--</h1>
+                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-fajr">
+                                        --:--
+                                    </h1>
                                     <h6 class="inter-bold" id="timer-fajr">--:--</h6>
                                 </div>
                             </div>
-
                         </div>
                         <div class="col">
-
                             <div class="card text-center">
-                                <div class="card-body">
+                                <div class="card-body-custom">
                                     <div class="d-flex justify-content-center">
                                         <span class="opacity-50 fs-5 inter-bold">Syuruk</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-syuruk">--:--</h1>
+                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-syuruk">
+                                        --:--
+                                    </h1>
                                     <h6 class="inter-bold" id="timer-syuruk">--:--</h6>
                                 </div>
                             </div>
-
                         </div>
                         <div class="col">
-
                             <div class="card text-center">
-                                <div class="card-body">
+                                <div class="card-body-custom">
                                     <div class="d-flex justify-content-center">
                                         <span class="opacity-50 fs-5 inter-bold">Zohor</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-dhuhr">--:--</h1>
+                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-dhuhr">
+                                        --:--
+                                    </h1>
                                     <h6 class="inter-bold" id="timer-dhuhr">--:--</h6>
                                 </div>
                             </div>
-
                         </div>
                         <div class="col">
-
                             <div class="card text-center">
-                                <div class="card-body">
+                                <div class="card-body-custom">
                                     <div class="d-flex justify-content-center">
                                         <span class="opacity-50 fs-5 inter-bold">Asar</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-asr">--:--</h1>
+                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-asr">
+                                        --:--
+                                    </h1>
                                     <h6 class="inter-bold" id="timer-asr">--:--</h6>
                                 </div>
                             </div>
-
                         </div>
                         <div class="col">
-
                             <div class="card text-center">
-                                <div class="card-body">
+                                <div class="card-body-custom">
                                     <div class="d-flex justify-content-center">
                                         <span class="opacity-50 fs-5 inter-bold">Maghrib</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-sun"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-maghrib">--:--</h1>
+                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-maghrib">
+                                        --:--
+                                    </h1>
                                     <h6 class="inter-bold" id="timer-maghrib">--:--</h6>
                                 </div>
                             </div>
-
                         </div>
 
                         <div class="col">
-
                             <div class="card text-center">
-                                <div class="card-body">
+                                <div class="card-body-custom">
                                     <div class="d-flex justify-content-center">
                                         <span class="opacity-50 fs-5 inter-bold">Ishak</span>
                                         <!-- <div class="btn btn-outline-secondary">
                                             <i class="fa-regular fa-moon"></i>
                                         </div> -->
                                     </div>
-                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-isha">--:--</h1>
+                                    <h1 class="display-6 fw-bolder py-3 inter-black" id="time-isha">
+                                        --:--
+                                    </h1>
                                     <h6 class="inter-bold" id="timer-isha">--:--</h6>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
-                    
                 </div>
             </div>
             <div class="col-md-2 d-inline-flex">
                 <div class="d-flex bg-primary-solid shadow-lg rounded-5 p-2 mx-auto justify-content-center clock-card">
                     <div class="row g-2 justify-content-center text-uppercase fw-bold">
                         <div class="col justify-content-center align-self-center">
-
-                            <h1 class="display-2 fw-bolder py-3 text-white bebas" style="line-height: 20px; letter-spacing: 2px;" id="liveClock">00:00</h1>
-                            <span class="h1 display-4 bebas" id="liveClock-second">00 Saat</span> <span class="h1 bebas" style="letter-spacing: 1px;">Saat</span>
-
+                            <h1 class="display-2 fw-bolder py-3 text-white bebas"
+                                style="line-height: 20px; letter-spacing: 2px" id="liveClock">
+                                00:00
+                            </h1>
+                            <span class="h1 display-4 bebas" id="liveClock-second">00 Saat</span>
+                            <span class="h1 bebas" style="letter-spacing: 1px">Saat</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 
     <div class="modal fade" id="settingsModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -352,55 +392,91 @@
                 <div class="modal-body">
                     <label class="form-label">Pilih Zon</label>
                     <select class="form-select" id="zoneSelect">
-                        <option value="SGR01" selected>Selangor (Gombak, Petaling, Sepang, Hulu Langat, Hulu Selangor,
-                            Shah Alam)</option>
-                        <option value="SGR02">Selangor (Kuala Selangor, Sabak Bernam)</option>
+                        <option value="SGR01" selected>
+                            Selangor (Gombak, Petaling, Sepang, Hulu Langat, Hulu Selangor,
+                            Shah Alam)
+                        </option>
+                        <option value="SGR02">
+                            Selangor (Kuala Selangor, Sabak Bernam)
+                        </option>
                         <option value="SGR03">Selangor (Klang, Kuala Langat)</option>
 
-                        <option value="JHR01">Johor (Pulau Aur dan Pulau Pemanggil)</option>
-                        <option value="JHR02">Johor (Johor Bahru, Kota Tinggi, Mersing)</option>
+                        <option value="JHR01">
+                            Johor (Pulau Aur dan Pulau Pemanggil)
+                        </option>
+                        <option value="JHR02">
+                            Johor (Johor Bahru, Kota Tinggi, Mersing)
+                        </option>
                         <option value="JHR03">Johor (Kluang, Pontian)</option>
-                        <option value="JHR04">Johor (Batu Pahat, Muar, Segamat, Gemas Johor)</option>
+                        <option value="JHR04">
+                            Johor (Batu Pahat, Muar, Segamat, Gemas Johor)
+                        </option>
 
                         <option value="MLK01">Seluruh Negeri Melaka</option>
-
                     </select>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary rounded-pill px-4" onclick="saveSettings()">Tukar Sekarang</button>
+                    <button type="button" class="btn btn-primary rounded-pill px-4" onclick="saveSettings()">
+                        Tukar Sekarang
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-
     <script>
-        const hijriMonths = ["Muharam", "Safar", "Rabiul Awal", "Rabiul Akhir", "Jamadil Awal", "Jamadil Akhir", "Rejab", "Sya'ban", "Ramadan", "Syawal", "Zulkaedah", "Zulhijjah"];
-        const zoneNames = { "SGR01": "Daerah Hulu Selangor, Gombak, Petaling, Sepang Dan Hulu Langat", "SGR02": "Daerah Sabak Bernam Dan Kuala Selangor", "SGR03": "Daerah Klang Dan Kuala Langat", "JHR01": "Johor. Pulau Aur dan Pulau Pemanggil", "JHR02": "Johor. Johor Bahru, Kota Tinggi, Mersing", "MLK01": "Melaka. Melaka Tengah, Alor Gajah, Jasin", "WLY01": "Kuala Lumpur, Putrajaya" };
+        const hijriMonths = [
+            "Muharam",
+            "Safar",
+            "Rabiul Awal",
+            "Rabiul Akhir",
+            "Jamadil Awal",
+            "Jamadil Akhir",
+            "Rejab",
+            "Sya'ban",
+            "Ramadan",
+            "Syawal",
+            "Zulkaedah",
+            "Zulhijjah",
+        ];
+        const zoneNames = {
+            SGR01: "Daerah Hulu Selangor, Gombak, Petaling, Sepang Dan Hulu Langat",
+            SGR02: "Daerah Sabak Bernam Dan Kuala Selangor",
+            SGR03: "Daerah Klang Dan Kuala Langat",
+            JHR01: "Johor. Pulau Aur dan Pulau Pemanggil",
+            JHR02: "Johor. Johor Bahru, Kota Tinggi, Mersing",
+            MLK01: "Melaka. Melaka Tengah, Alor Gajah, Jasin",
+            WLY01: "Kuala Lumpur, Putrajaya",
+        };
 
-        let currentZone = localStorage.getItem('azanZone') || 'SGR01';
+        let currentZone = localStorage.getItem("azanZone") || "SGR01";
         let prayerDataTimes = {};
 
         // ... existing constants (hijriMonths, zoneNames, etc.) ...
 
         function updateClock() {
             const now = new Date();
-            
+
             // Display HH:MM
-            document.getElementById('liveClock').innerText = now.toLocaleTimeString('en-US', {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: true
-            });
+            document.getElementById("liveClock").innerText = now.toLocaleTimeString(
+                "en-US",
+                {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: true,
+                }
+            );
 
             // Display SS seconds
-            document.getElementById('liveClock-second').innerText = now.getSeconds().toString().padStart(2, '0') + " seconds";
+            document.getElementById("liveClock-second").innerText =
+                now.getSeconds().toString().padStart(2, "0") + " seconds";
 
-            document.getElementById('masihiDate').innerText = now.toLocaleDateString('ms-MY', {
-                year: 'numeric', 
-                month: 'short', 
-                day: 'numeric'
-            });
+            document.getElementById("masihiDate").innerText =
+                now.toLocaleDateString("ms-MY", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                });
 
             updateUIStates(now);
         }
@@ -408,7 +484,7 @@
         function updateUIStates(now) {
             let currentActiveId = null;
             let nextPrayerId = null;
-            const sortedKeys = ['fajr', 'syuruk', 'dhuhr', 'asr', 'maghrib', 'isha'];
+            const sortedKeys = ["fajr", "syuruk", "dhuhr", "asr", "maghrib", "isha"];
 
             // 1. Determine current active prayer
             for (let i = 0; i < sortedKeys.length; i++) {
@@ -420,86 +496,117 @@
             }
 
             // 2. Determine next prayer for the timer
-            // If we are past Isha, the next prayer is Fajr (technically tomorrow, but we'll show the gap)
-            nextPrayerId = sortedKeys.find(id => prayerDataTimes[id] > now);
+            nextPrayerId = sortedKeys.find((id) => prayerDataTimes[id] > now);
+
+            // --- NEW: PRAYER REMINDER LOGIC ---
+            const reminderCard = document.getElementById("prayerReminder").closest(".card");
+
+            // Check if next prayer exists and is NOT syuruk
+            if (nextPrayerId && nextPrayerId !== "syuruk") {
+                const nextTime = prayerDataTimes[nextPrayerId];
+                const diffMs = nextTime - now;
+                const diffMinutes = diffMs / 1000 / 60;
+
+                // Show card only if within 5 minutes (300,000 ms)
+                if (diffMinutes > 0 && diffMinutes <= 5) {
+                    reminderCard.style.display = "block";
+
+                    // Calculate MM:SS
+                    const m = Math.floor((diffMs % 3600000) / 60000);
+                    const s = Math.floor((diffMs % 60000) / 1000);
+
+                    document.getElementById("timerPrayer").innerText = `${m} Minit ${s} Saat`;
+
+                    // Map ID to Display Name
+                    const names = { fajr: "Subuh", dhuhr: "Zohor", asr: "Asar", maghrib: "Maghrib", isha: "Isyak" };
+                    document.getElementById("nextPrayer").innerText = names[nextPrayerId];
+                } else {
+                    reminderCard.style.display = "none";
+                }
+            } else {
+                reminderCard.style.display = "none";
+            }
+            // --- END NEW LOGIC ---
 
             // 3. Special Rule for Syuruk highlight
-            if (currentActiveId === 'syuruk') {
-                const syurukTime = prayerDataTimes['syuruk'];
+            if (currentActiveId === "syuruk") {
+                const syurukTime = prayerDataTimes["syuruk"];
                 const diffInMinutes = (now - syurukTime) / 1000 / 60;
                 if (diffInMinutes >= 15) {
-                    currentActiveId = 'dhuhr';
+                    currentActiveId = "dhuhr";
                 }
             }
 
             // 4. Update UI for each card
-            sortedKeys.forEach(id => {
-                const cardElement = document.getElementById(`time-${id}`).closest('.card');
+            sortedKeys.forEach((id) => {
+                const cardElement = document.getElementById(`time-${id}`).closest(".card");
                 const timerElement = document.getElementById(`timer-${id}`);
-                
-                // Reset states
-                cardElement.classList.remove('highlight-solid', 'blink-mode');
-                timerElement.style.display = 'none'; // Hide all timers by default
 
-                // Highlight Active
+                cardElement.classList.remove("highlight-solid", "blink-mode");
+                timerElement.style.display = "none";
+
                 if (id === currentActiveId) {
                     const startTime = prayerDataTimes[id];
                     const diffInSeconds = (now - startTime) / 1000;
 
-                    if (diffInSeconds >= 0 && diffInSeconds <= 60 && id !== 'dhuhr' || (id === 'dhuhr' && now >= prayerDataTimes['dhuhr'] && diffInSeconds <= 60)) {
-                        cardElement.classList.add('blink-mode');
+                    if ((diffInSeconds >= 0 && diffInSeconds <= 60 && id !== "dhuhr") ||
+                        (id === "dhuhr" && now >= prayerDataTimes["dhuhr"] && diffInSeconds <= 60)) {
+                        cardElement.classList.add("blink-mode");
                     } else {
-                        cardElement.classList.add('highlight-solid');
+                        cardElement.classList.add("highlight-solid");
                     }
                 }
 
-                // Show timer ONLY for the NEXT prayer
                 if (id === nextPrayerId) {
-                    timerElement.style.display = 'block';
+                    timerElement.style.display = "block";
                     const diffMs = prayerDataTimes[id] - now;
                     const h = Math.floor(diffMs / 3600000);
                     const m = Math.floor((diffMs % 3600000) / 60000);
-                    const s = Math.floor((diffMs % 60000) / 1000);
-                    
-                    // timerElement.innerText = `${h} Jam ${m} Min ${s} Saat`;
-                    timerElement.innerText = `${h} Jam ${m} Min lagi`;
-                    // timerElement.classList.add('text-gray'); 
+                    timerElement.innerText = h == 0 ? `${m} Min` : `${h} Jam ${m} Min`;
                 }
             });
         }
 
         async function fetchPrayerTimes() {
             try {
-                const response = await fetch(`https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&zone=${currentZone}&period=today`);
+                const response = await fetch(
+                    `https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&zone=${currentZone}&period=today`
+                );
                 const result = await response.json();
 
                 if (result.status === "OK!" && result.prayerTime.length > 0) {
                     const todayData = result.prayerTime[0];
 
                     // Hijrah Date Formatting
-                    const hijriParts = todayData.hijri.split('-');
-                    const hijriFullDate = `${hijriParts[2]} ${hijriMonths[parseInt(hijriParts[1]) - 1]} ${hijriParts[0]}`;
-                    document.getElementById('hijriDate').innerText = hijriFullDate;
-                    document.getElementById('currentZone').innerText = `Zon: ${zoneNames[currentZone] || currentZone}`;
+                    const hijriParts = todayData.hijri.split("-");
+                    const hijriFullDate = `${hijriParts[2]} ${hijriMonths[parseInt(hijriParts[1]) - 1]
+                        } ${hijriParts[0]}`;
+                    document.getElementById("hijriDate").innerText = hijriFullDate;
+                    document.getElementById("currentZone").innerText = `Zon: ${zoneNames[currentZone] || currentZone
+                        }`;
 
                     const prayerMapping = {
-                        'fajr': todayData.fajr,
-                        'syuruk': todayData.syuruk,
-                        'dhuhr': todayData.dhuhr,
-                        'asr': todayData.asr,
-                        'maghrib': todayData.maghrib,
-                        'isha': todayData.isha
+                        fajr: todayData.fajr,
+                        syuruk: todayData.syuruk,
+                        dhuhr: todayData.dhuhr,
+                        asr: todayData.asr,
+                        maghrib: todayData.maghrib,
+                        isha: todayData.isha,
                     };
 
                     for (const [id, timeStr] of Object.entries(prayerMapping)) {
-                        const [h, m] = timeStr.split(':');
+                        const [h, m] = timeStr.split(":");
                         const t = new Date();
                         t.setHours(parseInt(h), parseInt(m), 0);
                         prayerDataTimes[id] = t;
 
-                        document.getElementById(`time-${id}`).innerText = t.toLocaleTimeString('en-GB', {
-                            hour: '2-digit', minute: '2-digit', hour12: true
-                        }).toUpperCase();
+                        document.getElementById(`time-${id}`).innerText = t
+                            .toLocaleTimeString("en-GB", {
+                                hour: "2-digit",
+                                minute: "2-digit",
+                                hour12: true,
+                            })
+                            .toUpperCase();
                     }
                     // Initial UI update
                     updateUIStates(new Date());
@@ -510,10 +617,12 @@
         }
 
         function saveSettings() {
-            currentZone = document.getElementById('zoneSelect').value;
-            localStorage.setItem('azanZone', currentZone);
+            currentZone = document.getElementById("zoneSelect").value;
+            localStorage.setItem("azanZone", currentZone);
             fetchPrayerTimes();
-            bootstrap.Modal.getInstance(document.getElementById('settingsModal')).hide();
+            bootstrap.Modal.getInstance(
+                document.getElementById("settingsModal")
+            ).hide();
         }
 
         setInterval(updateClock, 1000);
@@ -523,35 +632,36 @@
         function updateClock() {
             const now = new Date();
 
-            document.getElementById('liveClock').innerText = now.toLocaleTimeString('en-US', {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: true
-            });
+            document.getElementById("liveClock").innerText = now.toLocaleTimeString(
+                "en-US",
+                {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: true,
+                }
+            );
 
-            document.getElementById('liveClock-second').innerText = now.toLocaleTimeString('en-US', {
-                second: '2-digit',
-            });
+            document.getElementById("liveClock-second").innerText =
+                now.toLocaleTimeString("en-US", {
+                    second: "2-digit",
+                });
 
-            document.getElementById('masihiDate').innerText = now.toLocaleDateString('ms-MY', {
-                // weekday: 'long',
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric'
-            });
+            document.getElementById("masihiDate").innerText =
+                now.toLocaleDateString("ms-MY", {
+                    // weekday: 'long',
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                });
 
             updateUIStates(now);
         }
 
         const refreshBtn = document.getElementById("refreshButton");
-        refreshBtn.addEventListener("click", function() {
+        refreshBtn.addEventListener("click", function () {
             window.location.reload();
         });
-
-
-
     </script>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
