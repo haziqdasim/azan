@@ -46,8 +46,8 @@
             color: black;
             font-family: "Inter", "bebas", sans-serif;
             overflow-x: hidden;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.8),
-                    rgba(255, 255, 255, 0.8)),
+            background-image: linear-gradient(rgba(255, 255, 255, 0.7),
+                    rgba(255, 255, 255, 0.7)),
                 url("assets/bg.webp");
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -79,20 +79,7 @@
             background-color: white !important;
             color: #0268a2 !important;
         }
-
-        .glass-card {
-            /* The "Glass" effect */
-            background: rgba(255, 255, 255, 0.15);
-            /* Translucent white */
-            backdrop-filter: blur(12px) saturate(180%);
-            /* The blur + color boost */
-            -webkit-backdrop-filter: blur(12px) saturate(180%);
-
-            /* "Liquid" Sheen */
-            background: linear-gradient(135deg,
-                    rgba(255, 255, 255, 0.2) 0%,
-                    rgba(255, 255, 255, 0.05) 100%);
-        }
+        
 
         .bebas {
             font-family: "bebas";
@@ -206,6 +193,27 @@
             opacity: 1 !important;
         }
 
+        @keyframes blink-steps {
+        to {
+            visibility: hidden;
+        }
+        }
+
+        .warning-icon {
+        animation: blink-steps 1s steps(1) infinite;
+        }
+
+        /* Animation for the status circle */
+        @keyframes status-blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.1; }
+            100% { opacity: 1; }
+        }
+
+        .blink-status {
+            animation: status-blink 1.5s infinite ease-in-out;
+            font-size: 12px;
+        }
 
     </style>
 </head>
@@ -220,7 +228,7 @@
                             <div class="text-start">
                                 <img src="assets/logo.png" alt="logo" width="250" />
                                 <span class="inter-bold fs-4" style="letter-spacing: -1px">Waktu Solat 🕋
-                                    <small class="fs-4 inter-bold opacity-25">v1.1.2</small>
+                                    <small class="fs-4 inter-bold opacity-25">v1.1.3</small>
                                 </span>
                             </div>
                         </div>
@@ -245,17 +253,23 @@
         <div class="content-wrapper position-relative">
             <div class="row">
                 <div class="col-md-2" style="justify-content: center;">
-                    <!-- <div class="card shadow-lg align-self-center" id="cardUcapan" style="height: fit-content">
+                    <div class="card align-self-center mb-3" id="cardNuzulQuran" style="height: fit-content">
                         <div class="card-header">
-                            <span class="inter-medium fs-5">📢 Ucapan</span>
+                            <span class="inter-bold fs-5">Nuzul Quran</span>
                         </div>
                         <div class="card-body">
-                            <span id="textUcapan" class="fs-5">...</span>
+                            <span id="timerNuzulQuran" class="fs-5">17 Hari Lagi</span>
                         </div>
-                        <div class="progress" style="height: 5px; border-radius: 0;">
-                            <div id="timerBar" class="progress-bar bg-primary" role="progressbar" style="width: 100%;"></div>
+                    </div>
+                    <div class="card align-self-center mb-3" id="card10Ramadan" style="height: fit-content">
+                        <div class="card-header">
+                            <span class="inter-bold fs-5">10 Ramadan Terakhir</span>
                         </div>
-                    </div> -->
+                        <div class="card-body">
+                            <span id="timer10Ramadan" class="fs-5">19 Hari Lagi</span>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div class="col-md-8">
                     <span class="badge rounded-pill border px-4 py-3 mb-4 text-primary">
@@ -265,9 +279,14 @@
                     <h1 class="inter-black text-navy" style="font-size: 96px; letter-spacing: -3px">
                         Waktu Solat 🕋
                     </h1>
-                    <p class="lead text-muted mb-5 inter-medium" id="currentZone"></p>
-
-                    <div class="d-flex justify-content-center gap-3 mb-5">
+                    
+                    <!-- blink zone -->
+                    <div class="d-flex justify-content-center align-items-center gap-2">
+                        <span><i class="fa-solid fa-circle text-success blink-status"></i></span>
+                        <span class="fs-4 text-muted inter-medium" id="currentZone"></span>
+                    </div>                    
+                    
+                    <div class="d-flex justify-content-center gap-3 my-3">
                         <button class="btn btn-primary btn-lg rounded-pill px-4" id="refreshButton">
                             <i class="fa-solid fa-info me-1"></i>
                             <span class="inter-medium">Info Terkini</span>
@@ -697,57 +716,42 @@
             window.location.reload();
         });
 
-        let ucapanTimer = null; // Variable to store the interval
 
-        function submitUcapan() {
-            const inputField = document.getElementById("inputUcapan");
-            const displayCard = document.getElementById("cardUcapan");
-            const displayText = document.getElementById("textUcapan");
-            const timerBar = document.getElementById("timerBar");
-            const ucapanModal = bootstrap.Modal.getInstance(document.getElementById('ucapan'));
+        // --- NEW: Countdown Logic for Nuzul Quran & 10 Last Days ---
+        function updateRamadanCountdowns() {
+            const now = new Date();
+            
+            // Target Dates for 2026
+            const nuzulQuranDate = new Date("2026-03-07T00:00:00");
+            const last10RamadanDate = new Date("2026-03-10T00:00:00");
 
-            if (inputField.value.trim() !== "") {
-                // Clear any existing active timers
-                clearInterval(ucapanTimer);
+            function getRemainingDays(targetDate, elementId, cardId) {
+                const diffTime = targetDate - now;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                const element = document.getElementById(elementId);
+                const card = document.getElementById(cardId);
 
-                // 1. Setup Content
-                displayText.innerText = inputField.value;
-                displayCard.style.display = "block";
-                displayCard.style.opacity = "1";
-                
-                // 2. Hide the modal
-                ucapanModal.hide();
-
-                // 3. Timer Logic (10 seconds)
-                let timeLeft = 100; // Percentage
-                const duration = 10000; // 10 seconds total
-                const intervalTime = 100; // Update every 100ms
-                const step = (intervalTime / duration) * 100;
-
-                ucapanTimer = setInterval(() => {
-                    timeLeft -= step;
-                    timerBar.style.width = timeLeft + "%";
-
-                    if (timeLeft <= 0) {
-                        clearInterval(ucapanTimer);
-                        
-                        // Fade out and Reset
-                        displayCard.style.transition = "opacity 0.5s ease";
-                        displayCard.style.opacity = "0";
-
-                        setTimeout(() => {
-                            displayCard.style.display = "none";
-                            timerBar.style.width = "100%"; // Reset bar for next time
-                            displayText.innerText = "...";
-                            inputField.value = "";
-                        }, 500);
-                    }
-                }, intervalTime);
-
-            } else {
-                alert("Sila masukkan ucapan terlebih dahulu.");
+                if (diffDays > 0) {
+                    element.innerText = `${diffDays} Hari Lagi`;
+                } else if (diffDays === 0) {
+                    element.innerText = `Hari Ini`;
+                    card.classList.add("bg-primary-solid"); // Highlight if it's today
+                } else {
+                    // If the date has passed, you can either hide the card or show a "Selesai" message
+                    element.innerText = `Telah Berlalu`;
+                    card.style.opacity = "0.5";
+                }
             }
+
+            getRemainingDays(nuzulQuranDate, "timerNuzulQuran", "cardNuzulQuran");
+            getRemainingDays(last10RamadanDate, "timer10Ramadan", "card10Ramadan");
         }
+
+        // Add this call inside your existing initialization
+        updateRamadanCountdowns();
+        // Optional: Update once a day or every hour
+        setInterval(updateRamadanCountdowns, 3600000);
+
 
     </script>
 
