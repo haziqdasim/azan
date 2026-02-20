@@ -219,96 +219,89 @@
 </head>
 
 <body class="vh-100 d-flex align-content-between flex-wrap p-2">
-    <div class="container-fluid text-center">
-        <div class="row">
-            <div class="col-md">
-                <div class="rounded-5 p-4 mx-auto">
-                    <div class="d-flex row g-2 justify-content-center fw-bold">
-                        <div class="col-md-4 align-self-center">
-                            <div class="text-start">
-                                <img src="assets/logo.png" alt="logo" width="250" />
-                                <span class="inter-bold fs-4" style="letter-spacing: -1px">Waktu Solat 🕋
-                                    <small class="fs-4 inter-bold opacity-25">v1.1.3</small>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 align-self-center">
-                            <!-- <img src="assets/logo.png" alt="logo" width="200"> -->
-                        </div>
-                        <div class="col-md-4 align-self-start">
-                            <div class="text-end">
-                                <span class="h1 display-2 fw-bolder bebas display" style="letter-spacing: 1px"
-                                    id="masihiDate">-- --- ----</span><br />
-                                <span class="h1 display-5 text-primary bebas" id="hijriDate">-- --- ----</span>
-                                <span class="h1 display-5 text-primary bebas">H</span><br />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid text-center">
-        <div class="content-wrapper position-relative">
-            <div class="row">
-                <div class="col-md-2 text-center">
-                    <div class="mb-2">
-                        <span class="fs-3 inter-bold">📅 Peristiwa</span>
-                    </div>
-                    <div class="card align-self-center mb-3" id="cardNuzulQuran" style="height: fit-content">
-                        <div class="card-header">
-                            <span class="inter-bold fs-5">Nuzul Quran</span>
-                        </div>
-                        <div class="card-body">
-                            <span id="timerNuzulQuran" class="fs-5 inter-medium">-- Hari Lagi</span>
-                        </div>
-                    </div>
-                    <div class="card align-self-center mb-3" id="card10Ramadan" style="height: fit-content">
-                        <div class="card-header">
-                            <span class="inter-bold fs-5">10 Ramadan Terakhir</span>
-                        </div>
-                        <div class="card-body">
-                            <span id="timer10Ramadan" class="fs-5 inter-medium">-- Hari Lagi</span>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="col-md-8">
-                    <span class="badge rounded-pill border px-4 py-3 mb-4 text-primary">
-                        <i class="fs-5 fa-solid fa-mosque me-1"></i>
-                        <span class="h6 inter-medium">Portal Waktu Solat</span>
+    <div class="container-fluid text-center mb-4">
+        <div class="row align-items-center g-3">
+            <div class="col-12 col-lg-4 text-center text-lg-start">
+                <div class="text-start">
+                    <img src="assets/logo.png" alt="logo" width="250" />
+                    <span class="inter-bold fs-4" style="letter-spacing: -1px">Waktu Solat 🕋
+                        <small class="fs-4 inter-bold opacity-25">v1.1.3</small>
                     </span>
-                    <h1 class="inter-black text-navy" style="font-size: 96px; letter-spacing: -3px">
-                        Waktu Solat 🕋
-                    </h1>
-                    
-                    <!-- blink zone -->
-                    <div class="d-flex justify-content-center align-items-center gap-2">
-                        <span><i class="fa-solid fa-circle text-success blink-status"></i></span>
-                        <span class="fs-4 text-muted inter-medium" id="currentZone"></span>
-                    </div>                    
-                    
-                    <div class="d-flex justify-content-center gap-3 my-3">
-                        <button class="btn btn-primary btn-lg rounded-pill px-4" id="refreshButton">
-                            <i class="fa-solid fa-info me-1"></i>
-                            <span class="inter-medium">Info Terkini</span>
-                        </button>
-                        <button type="button" class="btn btn-light btn-lg rounded-pill px-4" data-bs-toggle="modal"
-                            data-bs-target="#settingsModal">
-                            <i class="fa-solid fa-map-location-dot me-1"></i>
-                            <span class="inter-medium">Pilih Zon</span>
-                        </button>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 text-center">
+                <!-- <img src="assets/logo.png" alt="logo" width="200"> -->
+            </div>
+            <div class="col-12 col-lg-4 text-center text-lg-end">
+                <div class="text-end">
+                    <span class="h1 display-2 fw-bolder bebas display" style="letter-spacing: 1px"
+                        id="masihiDate">-- --- ----</span><br />
+                    <span class="h1 display-5 text-primary bebas" id="hijriDate">-- --- ----</span>
+                    <span class="h1 display-5 text-primary bebas">H</span><br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- dissapear -->
+    <div class="container-fluid text-center">
+        <div class="row g-4">
+            <div class="col-12 col-md-6 col-xl-2 order-2 order-xl-1">
+                <div class="mb-2">
+                    <span class="fs-3 inter-bold">📅 Peristiwa</span>
+                </div>
+                <div class="card align-self-center mb-3" id="cardNuzulQuran" style="height: fit-content">
+                    <div class="card-header">
+                        <span class="inter-bold fs-5">Nuzul Quran</span>
+                    </div>
+                    <div class="card-body">
+                        <span id="timerNuzulQuran" class="fs-5 inter-medium">-- Hari Lagi</span>
                     </div>
                 </div>
-                <div class="col-md-2 d-flex" style="justify-content: center;">
-                    <div class="card shadow-lg align-self-center" style="height: fit-content">
-                        <div class="card-body" id="prayerReminder">
-                            <span class="display-5 inter-bold" style="letter-spacing: -1px;" id="timerPrayer">0M 0s</span><br />
-                            <span class="h5 inter-medium">Sebelum Masuk Waktu</span><span
-                                class="inter-bold"></span><br />
-                            <span class="display-5 inter-bold" style="letter-spacing: -1px;" id="nextPrayer">Asar</span><br>
-                        </div>
+                <div class="card align-self-center mb-3" id="card10Ramadan" style="height: fit-content">
+                    <div class="card-header">
+                        <span class="inter-bold fs-5">10 Ramadan Terakhir</span>
+                    </div>
+                    <div class="card-body">
+                        <span id="timer10Ramadan" class="fs-5 inter-medium">-- Hari Lagi</span>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-12 col-xl-8 order-1 order-xl-2 text-center">
+                <span class="badge rounded-pill border px-4 py-3 mb-4 text-primary">
+                    <i class="fs-5 fa-solid fa-mosque me-1"></i>
+                    <span class="h6 inter-medium">Portal Waktu Solat</span>
+                </span>
+                <h1 class="inter-black text-navy" style="font-size: 96px; letter-spacing: -3px">
+                    Waktu Solat 🕋
+                </h1>
+                
+                <!-- blink zone -->
+                <div class="d-flex justify-content-center align-items-center gap-2">
+                    <span><i class="fa-solid fa-circle text-success blink-status"></i></span>
+                    <span class="fs-4 text-muted inter-medium" id="currentZone"></span>
+                </div>                    
+                
+                <div class="d-flex justify-content-center gap-3 my-3">
+                    <button class="btn btn-primary btn-lg rounded-pill px-4" id="refreshButton">
+                        <i class="fa-solid fa-info me-1"></i>
+                        <span class="inter-medium">Info Terkini</span>
+                    </button>
+                    <button type="button" class="btn btn-light btn-lg rounded-pill px-4" data-bs-toggle="modal"
+                        data-bs-target="#settingsModal">
+                        <i class="fa-solid fa-map-location-dot me-1"></i>
+                        <span class="inter-medium">Pilih Zon</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-2 order-3 order-xl-3 d-flex align-items-center justify-content-center">
+                <div class="card shadow-lg align-self-center" style="height: fit-content">
+                    <div class="card-body" id="prayerReminder">
+                        <span class="display-5 inter-bold" style="letter-spacing: -1px;" id="timerPrayer">0M 0s</span><br />
+                        <span class="h5 inter-medium">Sebelum Masuk Waktu</span><span
+                            class="inter-bold"></span><br />
+                        <span class="display-5 inter-bold" style="letter-spacing: -1px;" id="nextPrayer">Asar</span><br>
                     </div>
                 </div>
             </div>
@@ -316,10 +309,10 @@
     </div>
 
     <div class="container-fluid text-center">
-        <div class="row">
-            <div class="col-md-10">
-                <div class="bg-white shadow-lg rounded-5 p-4 mx-auto">
-                    <div class="row g-2 justify-content-center text-uppercase fw-bold d-flex">
+        <div class="row g-3">
+            <div class="col-12 col-xl-10">
+                <div class="bg-white shadow-lg rounded-5 p-3 p-md-4">
+                    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3">
                         <div class="col">
                             <div class="card text-center">
                                 <div class="card-body-custom">
@@ -402,7 +395,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 d-inline-flex">
+            <div class="col-12 col-xl-2 d-inline-flex">
                 <div class="d-flex bg-primary-solid shadow-lg rounded-5 p-2 mx-auto justify-content-center clock-card">
                     <div class="row g-2 justify-content-center text-uppercase fw-bold">
                         <div class="col justify-content-center align-self-center">
