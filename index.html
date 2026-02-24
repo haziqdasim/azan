@@ -124,33 +124,12 @@
         }
 
         .clock-card {
-            flex: auto;
-        }
-
-        /* Circular progress container */
-        .clock-card {
             position: relative;
-            background: white; 
-            /* This makes the gradient transition smoothly */
-            transition: background 0.1s linear; 
-            flex: auto;
-        }
-
-        /* Optional: Add a mask to make it look like a ring instead of a full circle */
-        .clock-card::after {
-            content: "";
-            position: absolute;
-            inset: 25px; /* Thickness of the ring */
-            background: #0268a2; /* Matches your solid primary color */
-            border-radius: 13px;
+            overflow: hidden; /* Keeps the animation inside the rounded corners */
             z-index: 1;
+            flex: auto;
         }
 
-        /* Ensure text stays above the ring */
-        .clock-card > div {
-            position: relative;
-            z-index: 2;
-        }
 
         /* Blinking Animation */
         @keyframes blink-active {
@@ -225,7 +204,7 @@
                 <div class="text-start">
                     <img src="assets/logo.png" alt="logo" width="270" />
                     <span class="inter-bold fs-3" style="letter-spacing: -1px">Waktu Solat 🕋
-                        <small class="fs-4 inter-bold opacity-25">v1.1.4</small>
+                        <small class="fs-4 inter-bold opacity-25">v1.1.5</small>
                     </span>
                 </div>
             </div>
@@ -396,16 +375,19 @@
                 </div>
             </div>
             <div class="col-12 col-xl-2 d-inline-flex">
-                <div class="d-flex bg-primary-solid shadow-lg rounded-5 p-2 mx-auto justify-content-center clock-card">
+
+                <div class="d-flex bg-primary-solid shadow-lg rounded-5 pt-2 mx-auto justify-content-center clock-card">
                     <div class="row g-2 justify-content-center text-uppercase fw-bold">
                         <div class="col justify-content-center align-self-center">
-                            <h1 class="display-3 fw-bolder py-3 text-white bebas"
+                            <h1 class="display-3 fw-bolder text-white bebas"
                                 style="letter-spacing: 2px" id="liveClock">
                                 00:00
                             </h1>
+                            <small id="liveClock-second" class="d-none"></small>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -488,7 +470,7 @@
         function updateClock() {
             const now = new Date();
 
-            // Display HH:MM
+            // Display countdown HH:MM
             document.getElementById("liveClock").innerText = now.toLocaleTimeString(
                 "en-US",
                 {
@@ -664,22 +646,12 @@
             const seconds = now.getSeconds();
             const milliseconds = now.getMilliseconds();
             
-            // 1. Smooth Rotation Logic
-            // Using (seconds + ms/1000) creates a float (e.g., 5.4s) for sub-pixel smoothness
-            const degree = ((seconds + milliseconds / 1000) / 60) * 360;
 
-            const clockCard = document.querySelector(".clock-card");
-            if (clockCard) {
-                clockCard.style.background = `conic-gradient(
-                    rgba(255, 255, 255, 0.8) ${degree}deg, 
-                    rgba(255, 255, 255, 0.2) ${degree}deg
-                )`;
-            }
-
-            // 2. Text Clock Update (HH:MM)
+            // 1. Text Clock Update (HH:MM)
             const timeString = now.toLocaleTimeString("en-US", {
                 hour: "2-digit",
                 minute: "2-digit",
+                second:"2-digit",
                 hour12: true,
             });
             
@@ -687,7 +659,7 @@
                 document.getElementById("liveClock").innerText = timeString;
             }
 
-            // 3. Date Updates
+            // 2. Date Updates
             document.getElementById("masihiDate").innerText = now.toLocaleDateString("ms-MY", {
                 year: "numeric",
                 month: "long",
@@ -696,13 +668,9 @@
 
             // Keep the UI states (highlights/timers) updated
             updateUIStates(now);
-
-            // Call the next frame for ultra-smooth movement
-            requestAnimationFrame(updateClock);
+            
         }
-
-        // Start the smooth loop
-        requestAnimationFrame(updateClock);
+        
 
         // Fetch prayer times separately so they don't run 60 times a second
         setInterval(fetchPrayerTimes, 600000); // Refresh data every 10 mins
