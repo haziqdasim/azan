@@ -128,6 +128,24 @@
             overflow: hidden; /* Keeps the animation inside the rounded corners */
             z-index: 1;
             flex: auto;
+
+            background: linear-gradient(-45deg, #0268A2, #0388D4, #0268A2, #0388D4);
+            background-size: 400% 400%;
+            animation: gradient 6s ease infinite;
+        }
+
+
+        /* gradient animation */
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
 
@@ -376,10 +394,10 @@
             </div>
             <div class="col-12 col-xl-2 d-inline-flex">
 
-                <div class="d-flex bg-primary-solid shadow-lg rounded-5 pt-2 mx-auto justify-content-center clock-card">
+                <div class="d-flex rounded-5 pt-2 mx-auto justify-content-center clock-card">
                     <div class="row g-2 justify-content-center text-uppercase fw-bold">
                         <div class="col justify-content-center align-self-center">
-                            <h1 class="display-3 fw-bolder text-white bebas"
+                            <h1 class="display-4 fw-bolder text-white bebas"
                                 style="letter-spacing: 2px" id="liveClock">
                                 00:00
                             </h1>
@@ -398,12 +416,12 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Ubah Zon</h5>
+                    <h5 class="modal-title inter-medium">Ubah Zon</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <label class="form-label">Pilih Zon</label>
-                    <select class="form-select" id="zoneSelect">
+                    <label class="form-label inter-medium">Pilih Zon</label>
+                    <select class="form-select inter-medium" id="zoneSelect">
                         <option value="SGR01" selected>
                             Selangor (Gombak, Petaling, Sepang, Hulu Langat, Hulu Selangor,
                             Shah Alam)
@@ -428,7 +446,7 @@
                     </select>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary rounded-pill px-4" onclick="saveSettings()">
+                    <button type="button" class="btn btn-primary rounded-pill px-4 inter-medium" onclick="saveSettings()">
                         Tukar Sekarang
                     </button>
                 </div>
