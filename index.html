@@ -272,7 +272,7 @@
                 <div class="text-start">
                     <img src="assets/logo.png" alt="logo" width="270" />
                     <span class="inter-bold fs-3" style="letter-spacing: -1px">Waktu Solat 🕋
-                        <small class="fs-4 inter-bold opacity-25">v1.1.8</small>
+                        <small class="fs-4 inter-bold opacity-25">v1.1.9</small>
                     </span>
                 </div>
             </div>
@@ -295,9 +295,9 @@
     <div class="container-fluid text-center">
         <div class="row g-4">
             <div class="col-12 col-md-6 col-xl-2 order-2 order-xl-1">
-                <div class="mb-2">
+                <!-- <div class="mb-2">
                     <span class="fs-3 inter-bold">📅 Peristiwa</span>
-                </div>
+                </div> -->
                 <div class="card align-self-center mb-3" id="cardCountdown01" style="height: fit-content">
                     <div class="card-header">
                         <span class="inter-bold fs-5">Nuzul Quran</span>
@@ -312,6 +312,14 @@
                     </div>
                     <div class="card-body">
                         <span id="timerCountdown02" class="fs-5 inter-medium">-- Hari Lagi</span>
+                    </div>
+                </div>
+                <div class="card align-self-center mb-3" id="cardCountdown03" style="height: fit-content">
+                    <div class="card-header">
+                        <span class="inter-bold fs-5">Raya Aildilfitri</span>
+                    </div>
+                    <div class="card-body">
+                        <span id="timerCountdown03" class="fs-5 inter-medium">-- Hari Lagi</span>
                     </div>
                 </div>
                 
@@ -449,7 +457,7 @@
                 <div class="d-flex rounded-5 pt-2 mx-auto justify-content-center clock-card">
                     <div class="row g-2 justify-content-center text-uppercase fw-bold">
                         <div class="col justify-content-center align-self-center">
-                            <h1 class="display-2 fw-bolder text-white bebas" id="liveClock">
+                            <h1 class="display-3 fw-bolder text-white bebas" id="liveClock">
                                 00:00:00
                             </h1>
                             <small id="liveClock-second" class="d-none"></small>
@@ -596,7 +604,7 @@
                 const diffMs = nextTime - now;
                 const diffMinutes = diffMs / 1000 / 60;
 
-                // Show card only if within 5 minutes (300,000 ms)
+                // Show card only if within 10 minutes
                 if (diffMinutes > 0 && diffMinutes <= 10) {
                     reminderCard.style.display = "block";
 
@@ -759,13 +767,14 @@
         });
 
 
-        // --- NEW: Countdown Logic for Nuzul Quran & 10 Last Days ---
+        // --- NEW: Countdown Logic ---
         function updateRamadanCountdowns() {
             const now = new Date();
             
             // Target Dates for 2026
-            const countdown01Date = new Date("2026-03-07T00:00:00");
-            const countdown02Date = new Date("2026-03-10T00:00:00");
+            const countdown01Date = new Date("2026-03-07T00:00:00"); // Nuzul Quran
+            const countdown02Date = new Date("2026-03-10T00:00:00"); // 10 Ramadan Terakhir
+            const countdown03Date = new Date("2026-03-20T00:00:00"); // Hari Raya Aidilfitri
 
             function getRemainingDays(targetDate, elementId, cardId) {
                 const diffTime = targetDate - now;
@@ -773,20 +782,23 @@
                 const element = document.getElementById(elementId);
                 const card = document.getElementById(cardId);
 
+                if (!element || !card) return; // Safety check
+
                 if (diffDays > 0) {
                     element.innerText = `${diffDays} Hari Lagi`;
                 } else if (diffDays === 0) {
                     element.innerText = `Hari Ini`;
-                    card.classList.add("bg-primary-solid"); // Highlight if it's today
+                    card.classList.add("bg-primary-solid"); 
                 } else {
-                    // If the date has passed, you can either hide the card or show a "Selesai" message
                     element.innerText = `Telah Berlalu`;
                     card.style.opacity = "0.5";
+                    card.classList.remove("bg-primary-solid");
                 }
             }
 
             getRemainingDays(countdown01Date, "timerCountdown01", "cardCountdown01");
             getRemainingDays(countdown02Date, "timerCountdown02", "cardCountdown02");
+            getRemainingDays(countdown03Date, "timerCountdown03", "cardCountdown03");
         }
 
         // Add this call inside your existing initialization
