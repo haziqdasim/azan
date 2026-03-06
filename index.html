@@ -129,7 +129,8 @@
             z-index: 1;
             flex: auto;
 
-            background: linear-gradient(-45deg, #0268A2, #0388D4, #0268A2, #0388D4);
+            /* background: linear-gradient(-45deg, #0268A2, #0388D4, #0268A2, #0388D4); */
+            background: linear-gradient(-45deg, #36d1dc, #5b86e5, #36d1dc, #5b86e5);
             background-size: 400% 400%;
             animation: gradient 6s ease infinite;
         }
@@ -271,7 +272,7 @@
                 <div class="text-start">
                     <img src="assets/logo.png" alt="logo" width="270" />
                     <span class="inter-bold fs-3" style="letter-spacing: -1px">Waktu Solat 🕋
-                        <small class="fs-4 inter-bold opacity-25">v1.1.6</small>
+                        <small class="fs-4 inter-bold opacity-25">v1.1.7</small>
                     </span>
                 </div>
             </div>
@@ -297,20 +298,20 @@
                 <div class="mb-2">
                     <span class="fs-3 inter-bold">📅 Peristiwa</span>
                 </div>
-                <div class="card align-self-center mb-3" id="cardNuzulQuran" style="height: fit-content">
+                <div class="card align-self-center mb-3" id="cardCountdown01" style="height: fit-content">
                     <div class="card-header">
                         <span class="inter-bold fs-5">Nuzul Quran</span>
                     </div>
                     <div class="card-body">
-                        <span id="timerNuzulQuran" class="fs-5 inter-medium">-- Hari Lagi</span>
+                        <span id="timerCountdown01" class="fs-5 inter-medium">-- Hari Lagi</span>
                     </div>
                 </div>
-                <div class="card align-self-center mb-3" id="card10Ramadan" style="height: fit-content">
+                <div class="card align-self-center mb-3" id="cardCountdown02" style="height: fit-content">
                     <div class="card-header">
                         <span class="inter-bold fs-5">10 Ramadan Terakhir</span>
                     </div>
                     <div class="card-body">
-                        <span id="timer10Ramadan" class="fs-5 inter-medium">-- Hari Lagi</span>
+                        <span id="timerCountdown02" class="fs-5 inter-medium">-- Hari Lagi</span>
                     </div>
                 </div>
                 
@@ -358,7 +359,7 @@
 
     <div class="container-fluid text-center">
         <div class="row g-3">
-            <div class="col-12 col-xl-10">
+            <div class="col-12 col-xl-9">
                 <div class="bg-white shadow-lg rounded-5 p-3 p-md-4">
                     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3">
                         <div class="col">
@@ -443,13 +444,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-xl-2 d-inline-flex">
+            <div class="col-12 col-xl-3 d-inline-flex">
 
                 <div class="d-flex rounded-5 pt-2 mx-auto justify-content-center clock-card">
                     <div class="row g-2 justify-content-center text-uppercase fw-bold">
                         <div class="col justify-content-center align-self-center">
-                            <h1 class="display-4 fw-bolder text-white bebas"
-                                style="letter-spacing: 2px" id="liveClock">
+                            <h1 class="display-1 fw-bolder text-white bebas"
+                                style="letter-spacing: 4px" id="liveClock">
                                 00:00
                             </h1>
                             <small id="liveClock-second" class="d-none"></small>
@@ -738,8 +739,9 @@
 
             // 2. Date Updates
             document.getElementById("masihiDate").innerText = now.toLocaleDateString("ms-MY", {
+                weekday: "long",
                 year: "numeric",
-                month: "long",
+                month: "short",
                 day: "numeric",
             });
 
@@ -763,8 +765,8 @@
             const now = new Date();
             
             // Target Dates for 2026
-            const nuzulQuranDate = new Date("2026-03-07T00:00:00");
-            const last10RamadanDate = new Date("2026-03-10T00:00:00");
+            const countdown01Date = new Date("2026-03-07T00:00:00");
+            const countdown02Date = new Date("2026-03-10T00:00:00");
 
             function getRemainingDays(targetDate, elementId, cardId) {
                 const diffTime = targetDate - now;
@@ -784,8 +786,8 @@
                 }
             }
 
-            getRemainingDays(nuzulQuranDate, "timerNuzulQuran", "cardNuzulQuran");
-            getRemainingDays(last10RamadanDate, "timer10Ramadan", "card10Ramadan");
+            getRemainingDays(countdown01Date, "timerCountdown01", "cardCountdown01");
+            getRemainingDays(countdown02Date, "timerCountdown02", "cardCountdown02");
         }
 
         // Add this call inside your existing initialization
