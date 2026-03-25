@@ -272,7 +272,7 @@
                 <div class="text-start">
                     <img src="assets/logo.png" alt="logo" width="270" />
                     <span class="inter-bold fs-3" style="letter-spacing: -1px">Waktu Solat 🕋
-                        <small class="fs-4 inter-bold opacity-25">v1.2.1</small>
+                        <small class="fs-4 inter-bold opacity-25">v1.2.3</small>
                     </span>
                 </div>
             </div>
@@ -297,15 +297,15 @@
             <div class="col-12 col-md-6 col-xl-2 order-2 order-xl-1">
                 <div class="card align-self-center mb-3" id="cardCountdown01" style="height: fit-content">
                     <div class="card-header">
-                        <span class="inter-bold fs-5">Raya Aildilfitri</span>
+                        <span class="inter-bold fs-5">Raya Aidiladha</span>
                     </div>
                     <div class="card-body">
                         <span id="timerCountdown01" class="fs-5 inter-medium">-- Hari Lagi</span>
                     </div>
                 </div>
-                <!-- <div class="card align-self-center mb-3" id="cardCountdown02" style="height: fit-content">
+                <div class="card align-self-center mb-3" id="cardCountdown02" style="height: fit-content">
                     <div class="card-header">
-                        <span class="inter-bold fs-5">10 Ramadan Terakhir</span>
+                        <span class="inter-bold fs-5">Maal Hijrah</span>
                     </div>
                     <div class="card-body">
                         <span id="timerCountdown02" class="fs-5 inter-medium">-- Hari Lagi</span>
@@ -313,12 +313,12 @@
                 </div>
                 <div class="card align-self-center mb-3" id="cardCountdown03" style="height: fit-content">
                     <div class="card-header">
-                        <span class="inter-bold fs-5">Raya Aildilfitri</span>
+                        <span class="inter-bold fs-5">Maulidur Rasul</span>
                     </div>
                     <div class="card-body">
                         <span id="timerCountdown03" class="fs-5 inter-medium">-- Hari Lagi</span>
                     </div>
-                </div> -->
+                </div>
                 
             </div>
             <div class="col-12 col-xl-8 order-1 order-xl-2 text-center">
@@ -767,9 +767,9 @@
             const now = new Date();
             
             // Target Dates for 2026
-            const countdown01Date = new Date("2026-03-20T00:00:00"); // Hari Raya Aidilfitri
-            const countdown02Date = new Date("2026-03-10T00:00:00"); 
-            const countdown03Date = new Date("2026-03-10T00:00:00"); 
+            const countdown01Date = new Date("2026-05-27T00:00:00"); // Hari Raya Aidiladha
+            const countdown02Date = new Date("2026-06-16T00:00:00"); // Maal Hijrah
+            const countdown03Date = new Date("2026-09-12T00:00:00"); // Maulidur Rasul
 
             function getRemainingDays(targetDate, elementId, cardId) {
                 const diffTime = targetDate - now;
