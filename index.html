@@ -46,9 +46,7 @@
             color: black;
             font-family: "Inter", "bebas", sans-serif;
             overflow-x: hidden;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.7),
-                    rgba(255, 255, 255, 0.7)),
-                url("assets/bg.webp");
+            /* background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url("assets/bg.webp"); */
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -262,17 +260,51 @@
             background-color: #0268a2 !important;
         }
 
+        /* 1. Ensure the video stays at the very bottom */
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -2; /* Pushed further back */
+            object-fit: cover;
+        }
+
+        /* 2. Create the Overlay Layer */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Default Light Mode Overlay: Soft White */
+            background: rgba(255, 255, 255, 0.733);
+            z-index: -1;
+            transition: background 0.5s ease;
+        }
+
+        /* 3. Dark Mode Overlay adjustment */
+        body.dark-mode::before {
+            background: rgba(0, 0, 0, 0.733); 
+        }
+
     </style>
 </head>
 
 <body class="vh-100 d-flex align-content-between flex-wrap p-2">
+    <video autoplay muted loop id="bg-video">
+        <source src="assets/bg-1.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
     <div class="container-fluid text-center mb-4">
         <div class="row align-items-center g-3">
             <div class="col-12 col-lg-6 text-center text-lg-start">
                 <div class="text-start">
                     <img src="assets/logo.png" alt="logo" width="270" />
                     <span class="inter-bold fs-3" style="letter-spacing: -1px">Waktu Solat 🕋
-                        <small class="fs-4 inter-bold opacity-25">v1.2.3</small>
+                        <small class="fs-4 inter-bold opacity-75">v2.1.1</small>
                     </span>
                 </div>
             </div>
@@ -308,42 +340,17 @@
                         <span id="timerCountdown02" class="fs-5 inter-medium">-- Hari Lagi</span>
                     </div>
                 </div>
-                <div class="card align-self-center mb-3" id="cardCountdown03" style="height: fit-content">
+                <!-- <div class="card align-self-center mb-3" id="cardCountdown03" style="height: fit-content">
                     <div class="card-header">
                         <span class="inter-bold fs-5">Maulidur Rasul</span>
                     </div>
                     <div class="card-body">
                         <span id="timerCountdown03" class="fs-5 inter-medium">-- Hari Lagi</span>
                     </div>
-                </div>
+                </div> -->
                 
             </div>
             <div class="col-12 col-xl-8 order-1 order-xl-2 text-center">
-
-                <h1 class="inter-black text-navy" style="font-size: 96px; letter-spacing: -3px">
-                    Waktu Solat 🕋
-                </h1>
-                
-                <div class="d-flex justify-content-center align-items-center gap-2">
-                    <span><i class="fa-solid fa-circle text-success blink-status"></i></span>
-                    <span class="fs-4 text-muted inter-medium" id="currentZone"></span>
-                </div>                    
-                
-                <div class="d-flex justify-content-center gap-3 my-3">
-                    <button class="btn btn-primary btn-lg rounded-pill px-4" id="refreshButton">
-                        <i class="fa-solid fa-info me-1"></i>
-                        <span class="inter-medium">Info Terkini</span>
-                    </button>
-                    <button type="button" class="btn btn-light btn-lg rounded-pill px-4" data-bs-toggle="modal"
-                        data-bs-target="#settingsModal">
-                        <i class="fa-solid fa-map-location-dot me-1"></i>
-                        <span class="inter-medium">Pilih Zon</span>
-                    </button>
-                    <button class="btn btn-dark btn-lg rounded-pill px-4" id="modeBtn">
-                        <i class="fa-solid fa-moon me-1"></i>
-                        <span class="inter-medium">Mod Gelap</span>
-                    </button>
-                </div>
 
             </div>
             <div class="col-12 col-md-6 col-xl-2 order-3 order-xl-3 d-flex align-items-center justify-content-center">
@@ -363,6 +370,34 @@
         <div class="row g-3">
             <div class="col-12 col-xl-9">
                 <div class="bg-white shadow-lg rounded-5 p-3 p-md-4" style="z-index: 2;">
+                    
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-start align-items-center pb-2 gap-2">
+                            <span><i class="fa-solid fa-circle text-success blink-status"></i></span>
+                            <span class="fs-6 text-muted inter-medium" id="currentZone"></span>
+                        </div>
+    
+                        <div class="d-flex justify-content-end align-items-center pb-2">
+                            
+                            <button type="button" class="btn btn-primary me-2" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" id="refreshButton">
+                                <i class="fa-solid fa-arrows-rotate me-1"></i>
+                                <span class="inter-medium">Refresh</span>
+                            </button>
+
+                            <button type="button" class="btn btn-light me-2" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"  data-bs-toggle="modal" data-bs-target="#settingsModal">
+                                <i class="fa-solid fa-map-location-dot me-1"></i>
+                                <span class="inter-medium">Pilih Zon</span>
+                            </button>
+
+                            <button type="button" class="btn btn-dark me-2" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" id="modeBtn">
+                                <i class="fa-solid fa-moon me-1"></i>
+                                <span class="inter-medium">Mod Gelap</span>
+                            </button>
+                            
+                        </div>
+                    </div>
+                    
+
                     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3">
                         <div class="col">
                             <div class="card text-center">
