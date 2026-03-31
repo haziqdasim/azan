@@ -55,6 +55,11 @@
         .card {
             border-radius: 13px;
             height: 200px;
+            
+            background-color: #1e1e1e11 !important;
+        
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
 
         .bg-primary-solid {
@@ -128,9 +133,13 @@
             flex: auto;
 
             /* background: linear-gradient(-45deg, #0268A2, #0388D4, #0268A2, #0388D4); */
-            background: linear-gradient(-45deg, #8ec4ff, #0494e4, #037dc2, #015585);
+            /* background: linear-gradient(-45deg, #8ec4ff, #0494e4, #037dc2, #015585); */
+            background: linear-gradient(-45deg, #8ec5ff70, #0496e470, #037cc270, #01558570);
             background-size: 400% 400%;
             animation: gradient 6s ease infinite;
+
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
 
         .hijridate-color
@@ -223,9 +232,19 @@
             color: #e0e0e0 !important;
         }
 
+        .bg-white {
+            background-color: #ffffff00 !important;
+            
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
         body.dark-mode .bg-white {
-            background-color: #1e1e1e !important;
-            color: white !important;
+            background-color: #1e1e1e80 !important;
+            color: #ffffff !important;
+            
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
 
         body.dark-mode .card {
@@ -246,20 +265,22 @@
 
         body.dark-mode .modal-content {
             background-color: #1e1e1e;
-            color: white;
+            color: #ffffff;
         }
 
         body.dark-mode .btn-light {
             background-color: #333;
-            color: white;
+            color:#ffffff;
             border-color: #444;
         }
 
         /* Ensure active prayer cards stay visible */
         body.dark-mode .highlight-solid {
-            background-color: #0268a2 !important;
+            background-color: #0267a270 !important;
         }
 
+
+        
         /* 1. Ensure the video stays at the very bottom */
         #bg-video {
             position: fixed;
